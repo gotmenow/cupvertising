@@ -25,7 +25,7 @@ export default function ForAdvertisers() {
               The Hyper-Local, Tangible Ad Channel <br/> Your Brand Needs.
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-              Put your brand directly in the hands of your customers. 20 minutes of focused attention in Edinburgh's busiest spots.
+              Put your brand directly in the hands of your customers. 20 minutes of focused attention in the UK's busiest spots.
             </p>
             <Link to={createPageUrl('Contact') + "?tab=advertiser"}>
               <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white text-lg px-8 h-12 rounded-full">
@@ -59,7 +59,7 @@ export default function ForAdvertisers() {
                 <User className="w-7 h-7" />
               </div>
               <h3 className="text-lg font-bold mb-2">Mobile Billboards</h3>
-              <p className="text-slate-600 text-sm">Customers walk your ad through the busiest parts of Edinburgh, extending reach.</p>
+              <p className="text-slate-600 text-sm">Customers walk your ad through the busiest high streets, extending reach.</p>
             </div>
             <div className="text-center p-6">
               <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-700">
@@ -84,7 +84,7 @@ export default function ForAdvertisers() {
             {/* Plan 1 */}
             <Card className="border border-slate-200 bg-white hover:shadow-xl transition-all flex flex-col">
               <CardHeader>
-                <CardTitle className="text-xl font-bold text-slate-900">Edinburgh Explorer</CardTitle>
+                <CardTitle className="text-xl font-bold text-slate-900">City Explorer</CardTitle>
                 <Badge variant="secondary" className="w-fit mt-2 bg-teal-100 text-teal-700 hover:bg-teal-100">Starter</Badge>
               </CardHeader>
               <CardContent className="flex-1 space-y-6">
@@ -109,7 +109,7 @@ export default function ForAdvertisers() {
                 Most Popular
               </div>
               <CardHeader>
-                <CardTitle className="text-xl font-bold text-slate-900">Edinburgh Connect</CardTitle>
+                <CardTitle className="text-xl font-bold text-slate-900">Regional Connect</CardTitle>
                 <Badge variant="secondary" className="w-fit mt-2 bg-teal-600 text-white hover:bg-teal-700">Growth</Badge>
               </CardHeader>
               <CardContent className="flex-1 space-y-6">
@@ -132,7 +132,7 @@ export default function ForAdvertisers() {
             {/* Plan 3 */}
             <Card className="border border-slate-200 bg-white hover:shadow-xl transition-all flex flex-col">
               <CardHeader>
-                <CardTitle className="text-xl font-bold text-slate-900">Edinburgh Impact</CardTitle>
+                <CardTitle className="text-xl font-bold text-slate-900">National Impact</CardTitle>
                 <Badge variant="secondary" className="w-fit mt-2 bg-slate-100 text-slate-700 hover:bg-slate-100">Enterprise</Badge>
               </CardHeader>
               <CardContent className="flex-1 space-y-6">

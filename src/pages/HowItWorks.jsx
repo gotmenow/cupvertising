@@ -33,7 +33,7 @@ export default function HowItWorks() {
                 
                 <h3 className="text-xl font-bold mb-4 text-slate-900">Partner Selection</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  We vet and onboard local Edinburgh distribution partners (cafes, offices, venues) that match our advertiser's target audience perfectly.
+                  We vet and onboard local distribution partners (cafes, offices, venues) that match our advertiser's target audience perfectly.
                 </p>
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function HowItWorks() {
 
                 <h3 className="text-xl font-bold mb-4 text-slate-900">Distribution & Exposure</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  We deliver the free cups to our partners, and the campaign begins! Your message is now a mobile, daily impression across Edinburgh.
+                  We deliver the free cups to our partners, and the campaign begins! Your message is now a mobile, daily impression across the UK.
                 </p>
               </div>
             </div>

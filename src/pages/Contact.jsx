@@ -73,7 +73,7 @@ export default function Contact() {
           </div>
           <h2 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h2>
           <p className="text-slate-600 mb-6">
-            We've received your details and are excited to explore a partnership with you. One of our Edinburgh team members will be in touch within 24 hours.
+            We've received your details and are excited to explore a partnership with you. One of our team members will be in touch within 24 hours.
           </p>
           <Button onClick={() => setSubmitted(false)} variant="outline">Send Another Message</Button>
         </Card>
@@ -196,9 +196,9 @@ export default function Contact() {
                      <Select value={advertiserForm.estimated_plan} onValueChange={v => setAdvertiserForm({...advertiserForm, estimated_plan: v})}>
                       <SelectTrigger><SelectValue placeholder="Select a plan" /></SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Edinburgh Explorer">Edinburgh Explorer</SelectItem>
-                        <SelectItem value="Edinburgh Connect">Edinburgh Connect</SelectItem>
-                        <SelectItem value="Edinburgh Impact">Edinburgh Impact</SelectItem>
+                        <SelectItem value="City Explorer">City Explorer</SelectItem>
+                        <SelectItem value="Regional Connect">Regional Connect</SelectItem>
+                        <SelectItem value="National Impact">National Impact</SelectItem>
                         <SelectItem value="Unsure">Unsure / Need Advice</SelectItem>
                       </SelectContent>
                     </Select>

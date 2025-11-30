@@ -99,7 +99,7 @@ export default function Layout({ children }) {
                 <span className="text-xl font-bold">Cupvertising</span>
               </div>
               <p className="text-slate-400 max-w-sm">
-                Edinburgh's premier cup advertising network. Connecting local businesses with free supplies and brands with hands-on exposure.
+                The UK's premier cup advertising network. Connecting local businesses with free supplies and brands with hands-on exposure.
               </p>
             </div>
             <div>
@@ -120,7 +120,7 @@ export default function Layout({ children }) {
             </div>
           </div>
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
-            © {new Date().getFullYear()} Cupvertising Edinburgh. All rights reserved.
+            © {new Date().getFullYear()} Cupvertising UK. All rights reserved.
           </div>
         </div>
       </footer>

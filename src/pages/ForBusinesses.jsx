@@ -24,7 +24,7 @@ export default function ForBusinesses() {
               Stop Buying Cups. <br/>Start Saving Money.
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-              Edinburgh's smartest supply chain. Join hundreds of local cafes and businesses getting their essential supplies for free.
+              The UK's smartest supply chain. Join hundreds of local cafes and businesses getting their essential supplies for free.
             </p>
             <Link to={createPageUrl('Contact') + "?tab=partner"}>
               <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 h-12 rounded-full">
@@ -75,7 +75,7 @@ export default function ForBusinesses() {
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Support Local Ecosystem</h3>
                   <p className="text-slate-600">
-                    Help fund other local, non-competing businesses. Be part of a network that helps Edinburgh thrive.
+                    Help fund other local, non-competing businesses. Be part of a network that helps local high streets thrive.
                   </p>
                 </div>
               </CardContent>
@@ -107,7 +107,7 @@ export default function ForBusinesses() {
           />
           <div className="absolute inset-0 bg-slate-900/50 flex items-center justify-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center px-4">
-              Join 50+ Edinburgh Businesses Saving £1000s Annually
+              Join 500+ UK Businesses Saving £1000s Annually
             </h2>
           </div>
       </section>

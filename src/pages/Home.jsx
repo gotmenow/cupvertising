@@ -14,7 +14,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-20">
           <img 
             src="https://images.unsplash.com/photo-1526403646408-57b94dc15399?q=80&w=2070&auto=format&fit=crop" 
-            alt="Edinburgh Skyline" 
+            alt="City Skyline" 
             className="w-full h-full object-cover"
           />
         </div>
@@ -28,7 +28,7 @@ export default function Home() {
             className="max-w-3xl mx-auto text-center"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-sm font-medium mb-6 border border-amber-500/30">
-              <MapPin className="w-4 h-4" /> Proudly Supporting Edinburgh Businesses
+              <MapPin className="w-4 h-4" /> Proudly Supporting UK Businesses
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Marketing That Moves: <br/>
@@ -60,7 +60,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Why Join the Revolution?</h2>
-            <p className="text-slate-600">Creating value for everyone in the Edinburgh ecosystem</p>
+            <p className="text-slate-600">Creating value for everyone in the business ecosystem</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -116,7 +116,7 @@ export default function Home() {
             <div className="flex-1">
               <img 
                 src="https://images.unsplash.com/photo-1506377295352-e3154d43ea9e?q=80&w=2070&auto=format&fit=crop" 
-                alt="Coffee cup in Edinburgh" 
+                alt="Coffee cup in the city" 
                 className="rounded-2xl shadow-2xl w-full h-auto object-cover aspect-video"
               />
             </div>
@@ -126,11 +126,11 @@ export default function Home() {
                 Local Focus
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Deeply Rooted in Edinburgh
+                Deeply Rooted in the UK
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                We're not just a cup company; we're an Edinburgh community builder. 
-                By connecting local advertisers with local cafes and offices, we create a micro-economy that supports small business growth right here in the capital.
+                We're not just a cup company; we're a community builder. 
+                By connecting local advertisers with local cafes and offices, we create a micro-economy that supports small business growth across the nation.
               </p>
               <div className="pt-4">
                 <Link to={createPageUrl('Contact')}>
