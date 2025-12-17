@@ -225,13 +225,13 @@ export default function PitchDeck() {
                     <Badge variant="outline" className="text-slate-400 border-slate-200">Too Broad</Badge>
                   </div>
                   <div className="text-3xl font-bold text-slate-900">£42.6 Billion</div>
-                  <div className="text-xs text-slate-500 mt-1">Total UK Ad Spend. Misleading for niche targeting.</div>
+                  <div className="text-xs text-slate-500 mt-1">Total UK Ad Spend (TV, Digital, OOH).</div>
                 </div>
                 
                 <div className="p-6 bg-white border-l-4 border-amber-500 rounded-xl shadow-sm">
                   <div className="text-sm text-amber-600 font-bold uppercase mb-1">SAM (Volume Capacity)</div>
                   <div className="text-3xl font-bold text-slate-900">£2 Billion</div>
-                   <div className="text-xs text-slate-500 mt-1">UK Disposable Packaging Market Value.</div>
+                   <div className="text-xs text-slate-500 mt-1">UK Disposable Packaging Market (Sales Value).</div>
                   <div className="w-full bg-slate-100 h-2 rounded-full mt-3 overflow-hidden">
                     <div className="bg-amber-500 h-full w-[30%]" />
                   </div>
@@ -243,7 +243,7 @@ export default function PitchDeck() {
                     <Badge className="bg-teal-600 hover:bg-teal-700">Primary Focus</Badge>
                   </div>
                   <div className="text-4xl font-bold text-teal-900">£35M - £75M</div>
-                   <div className="text-sm text-teal-700 mt-2 font-medium">Targeted Experiential OOH Media</div>
+                   <div className="text-sm text-teal-700 mt-2 font-medium">High-Dwell-Time Experiential Media</div>
                    <div className="text-xs text-teal-600 mt-3 pt-3 border-t border-teal-200">
                      <span className="font-bold">Global Potential:</span> £200M - £400M
                    </div>
@@ -260,16 +260,16 @@ export default function PitchDeck() {
                     <span className="bg-red-100 text-red-600 p-1.5 rounded-lg text-sm">⚠️</span> Addressing the "Unbelievable"
                   </h3>
                   <p className="text-slate-600 leading-relaxed text-sm">
-                    Standard TAM figures (like the £42.6bn UK Ad Spend) are often inflated and misleading. We reject these vanity metrics. Our revenue comes from a specific budget pool, not the entire industry.
+                    The market size presented is often based on inflated TAM figures like the £42.6bn UK Ad Spend. These are misleading as they rely heavily on digital/TV budgets. The realistic revenue comes from a specific, defensible niche.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-                    <span className="bg-teal-100 text-teal-600 p-1.5 rounded-lg text-sm">🎯</span> The Defensible Niche
+                    <span className="bg-teal-100 text-teal-600 p-1.5 rounded-lg text-sm">🎯</span> The Defensible Niche (SOM)
                   </h3>
                   <p className="text-slate-600 leading-relaxed text-sm">
-                    Our Serviceable Obtainable Market (SOM) is the precise intersection of <strong>disposable packaging volume</strong> and <strong>high-value OOH budgets</strong>. This includes cups, burger boxes, and bags—maximizing surface area for premium impressions.
+                    This represents advertising budgets allocated to <strong>highly targeted, high-dwell-time OOH media</strong>. It captures localized spend (e.g., bus shelters) but with superior engagement. Packaging includes cups, burger boxes, and bags—maximizing surface area for premium impressions.
                   </p>
                 </div>
 
