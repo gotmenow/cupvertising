@@ -160,15 +160,15 @@ export default function PitchDeck() {
           </div>
         </motion.section>
 
-        {/* Slide 4: Strategic Roadmap (Timeline) */}
+        {/* Slide 4: Go-To-Market Strategy (Revised) */}
         <motion.section {...fadeInUp} className="bg-slate-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 opacity-10 pointer-events-none">
-            <Globe className="w-96 h-96 -mr-20 -mt-20" />
+            <MapPin className="w-96 h-96 -mr-20 -mt-20" />
           </div>
           
           <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-2">Expansion Strategy</h2>
-            <p className="text-slate-400 mb-12">From UK Roots to Global Dominance</p>
+            <h2 className="text-3xl font-bold mb-2">Go-To-Market Strategy</h2>
+            <p className="text-slate-400 mb-12">Proving Density & Unit Economics First</p>
 
             <div className="grid md:grid-cols-3 gap-8 relative">
               {/* Connecting Line */}
@@ -176,31 +176,31 @@ export default function PitchDeck() {
 
               <div className="relative">
                 <div className="w-24 h-24 bg-amber-500 rounded-full flex items-center justify-center text-black font-bold text-xl mb-6 shadow-lg shadow-amber-500/20 z-10 mx-auto md:mx-0">
-                  UK
+                  0-6m
                 </div>
-                <h3 className="text-xl font-bold mb-2">Phase 1: Primary Market</h3>
+                <h3 className="text-xl font-bold mb-2">Phase 1: Hyper-Local Pilot</h3>
                 <p className="text-sm text-slate-400">
-                  Dominate top 5 UK metro areas (London, Manchester, Edinburgh, etc). Establish logistics and prove unit economics.
+                  Focus on <strong>ONE</strong> high-density university town or business district. Secure 50 independent coffee shops. Prove 100% ad inventory sell-through.
                 </p>
               </div>
 
               <div className="relative">
                 <div className="w-24 h-24 bg-slate-800 border-2 border-amber-500/50 rounded-full flex items-center justify-center text-amber-500 font-bold text-xl mb-6 z-10 mx-auto md:mx-0">
-                  EU
+                  6-18m
                 </div>
-                <h3 className="text-xl font-bold mb-2">Phase 2: European Hubs</h3>
+                <h3 className="text-xl font-bold mb-2">Phase 2: City-Wide Rollout</h3>
                 <p className="text-sm text-slate-400">
-                  Expand to Paris, Berlin, and Amsterdam. Leverage existing multinational brand partnerships.
+                  Replicate the high-density model across 3 major UK cities. Introduce "takeaway food" packaging network.
                 </p>
               </div>
 
               <div className="relative">
                 <div className="w-24 h-24 bg-slate-800 border-2 border-slate-600 rounded-full flex items-center justify-center text-slate-400 font-bold text-xl mb-6 z-10 mx-auto md:mx-0">
-                  Global
+                  18m+
                 </div>
-                <h3 className="text-xl font-bold mb-2">Phase 3: Global Scale</h3>
+                <h3 className="text-xl font-bold mb-2">Phase 3: National Scale</h3>
                 <p className="text-sm text-slate-400">
-                  US and Asian market entry. Licensing model for rapid deployment in new territories.
+                  National partnerships with chain distributors. Programmatic ad-buying platform launch for advertisers.
                 </p>
               </div>
             </div>
