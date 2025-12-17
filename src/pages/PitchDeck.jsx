@@ -368,12 +368,12 @@ export default function PitchDeck() {
 
         {/* Slide 7: The Ask (Pie Chart) */}
         <motion.section {...fadeInUp} className="bg-slate-900 text-white rounded-3xl p-8 md:p-16 text-center">
-          <Badge className="bg-amber-500 text-black mb-8 px-4 py-1 text-base">SEED ROUND</Badge>
+          <Badge className="bg-amber-500 text-black mb-8 px-4 py-1 text-base">PRE-SEED ROUND</Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-4">The Ask</h2>
           <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-teal-400 mb-8">
-            £1,500,000
+            £350,000
           </div>
-          <p className="text-2xl text-slate-300 mb-16">For 20% Equity</p>
+          <p className="text-2xl text-slate-300 mb-16">To Fund 12-Month Pilot & MVP</p>
 
           <div className="grid md:grid-cols-2 gap-12 items-center text-left">
             <div className="h-[300px] w-full flex justify-center">
