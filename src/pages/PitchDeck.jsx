@@ -1,10 +1,9 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { 
-  TrendingUp, Recycle, Target, DollarSign, Globe, BarChart3, Briefcase, 
-  Lightbulb, Users, ArrowRight, CheckCircle2, MapPin, Rocket 
+  TrendingUp, Recycle, Globe, 
+  CheckCircle2, MapPin
 } from 'lucide-react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, 
@@ -208,87 +207,136 @@ export default function PitchDeck() {
           </div>
         </motion.section>
 
-        {/* Slide 5: Market Sizing (Pie/Bar) */}
+        {/* Slide 5: Market Analysis (Detailed) */}
         <motion.section {...fadeInUp}>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="flex items-center gap-4 mb-6">
+          <div className="mb-12">
+             <div className="flex items-center gap-4 mb-6">
                 <div className="h-10 w-2 bg-teal-500 rounded-full" />
-                <h2 className="text-3xl font-bold text-slate-900">Market Opportunity</h2>
+                <h2 className="text-3xl font-bold text-slate-900">Market Analysis: The Realistic Opportunity</h2>
               </div>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                The disposable food service packaging market is massive and recurring. We are intercepting this spend and converting it into media value.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="p-6 bg-white border border-slate-200 rounded-xl shadow-sm">
-                  <div className="text-sm text-slate-500 font-bold uppercase mb-1">Total Addressable Market (Global)</div>
-                  <div className="text-4xl font-bold text-slate-900">$150 Billion</div>
-                  <div className="w-full bg-slate-100 h-2 rounded-full mt-3 overflow-hidden">
-                    <div className="bg-slate-300 h-full w-full" />
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left Column: Visuals (TAM/SAM/SOM) */}
+            <div className="space-y-6">
+                <div className="p-6 bg-white border border-slate-200 rounded-xl shadow-sm opacity-70">
+                  <div className="flex justify-between">
+                    <div className="text-sm text-slate-500 font-bold uppercase mb-1">TAM (Context Only)</div>
+                    <Badge variant="outline" className="text-slate-400 border-slate-200">Too Broad</Badge>
                   </div>
+                  <div className="text-3xl font-bold text-slate-900">£42.6 Billion</div>
+                  <div className="text-xs text-slate-500 mt-1">Total UK Ad Spend. Misleading for niche targeting.</div>
                 </div>
                 
                 <div className="p-6 bg-white border-l-4 border-amber-500 rounded-xl shadow-sm">
-                  <div className="text-sm text-amber-600 font-bold uppercase mb-1">Serviceable Available Market (UK Focus)</div>
-                  <div className="text-4xl font-bold text-slate-900">$4 Billion</div>
-                   <div className="text-xs text-slate-500 mt-1">Disposable spend in major UK/EU Metro areas.</div>
+                  <div className="text-sm text-amber-600 font-bold uppercase mb-1">SAM (Volume Capacity)</div>
+                  <div className="text-3xl font-bold text-slate-900">£2 Billion</div>
+                   <div className="text-xs text-slate-500 mt-1">UK Disposable Packaging Market Value.</div>
                   <div className="w-full bg-slate-100 h-2 rounded-full mt-3 overflow-hidden">
-                    <div className="bg-amber-500 h-full w-[15%]" />
+                    <div className="bg-amber-500 h-full w-[30%]" />
                   </div>
                 </div>
 
-                <div className="p-6 bg-white border-l-4 border-teal-600 rounded-xl shadow-sm">
-                  <div className="text-sm text-teal-700 font-bold uppercase mb-1">Serviceable Obtainable Market (Year 3)</div>
-                  <div className="text-4xl font-bold text-slate-900">$15 Million</div>
-                   <div className="text-xs text-slate-500 mt-1">1% of SAM = 50 Million Units/Year</div>
-                  <div className="w-full bg-slate-100 h-2 rounded-full mt-3 overflow-hidden">
-                    <div className="bg-teal-600 h-full w-[2%]" />
+                <div className="p-6 bg-teal-50 border-l-4 border-teal-600 rounded-xl shadow-md ring-1 ring-teal-100">
+                  <div className="flex justify-between items-start">
+                    <div className="text-sm text-teal-800 font-bold uppercase mb-1">SOM (Target Niche)</div>
+                    <Badge className="bg-teal-600 hover:bg-teal-700">Primary Focus</Badge>
+                  </div>
+                  <div className="text-4xl font-bold text-teal-900">£35M - £75M</div>
+                   <div className="text-sm text-teal-700 mt-2 font-medium">Targeted Experiential OOH Media</div>
+                   <div className="text-xs text-teal-600 mt-3 pt-3 border-t border-teal-200">
+                     <span className="font-bold">Global Potential:</span> £200M - £400M
+                   </div>
+                  <div className="w-full bg-teal-200 h-2 rounded-full mt-3 overflow-hidden">
+                    <div className="bg-teal-600 h-full w-[80%]" />
                   </div>
                 </div>
-              </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 h-full flex flex-col justify-center">
-               <h3 className="text-xl font-bold text-center mb-6">Why Brands & Businesses Need This</h3>
-               <div className="space-y-6">
-                 <div className="flex gap-4">
-                   <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center shrink-0"><Target /></div>
-                   <div>
-                     <h4 className="font-bold text-slate-900">Hyper-Local Targeting</h4>
-                     <p className="text-sm text-slate-600">Reach customers within 1 mile of a point of sale. Perfect for local services.</p>
-                   </div>
-                 </div>
-                 <div className="flex gap-4">
-                   <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center shrink-0"><Users /></div>
-                   <div>
-                     <h4 className="font-bold text-slate-900">Guaranteed Engagement</h4>
-                     <p className="text-sm text-slate-600">20 minute dwell time per cup. Higher attention than digital ads.</p>
-                   </div>
-                 </div>
-                 <div className="flex gap-4">
-                   <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0"><Recycle /></div>
-                   <div>
-                     <h4 className="font-bold text-slate-900">Green Halo Effect</h4>
-                     <p className="text-sm text-slate-600">Brands associate themselves with sustainability by sponsoring free eco-products.</p>
-                   </div>
-                 </div>
-               </div>
+            {/* Right Column: Narrative Analysis */}
+            <div className="flex flex-col justify-center space-y-8 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <span className="bg-red-100 text-red-600 p-1.5 rounded-lg text-sm">⚠️</span> Addressing the "Unbelievable"
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed text-sm">
+                    Standard TAM figures (like the £42.6bn UK Ad Spend) are often inflated and misleading. We reject these vanity metrics. Our revenue comes from a specific budget pool, not the entire industry.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <span className="bg-teal-100 text-teal-600 p-1.5 rounded-lg text-sm">🎯</span> The Defensible Niche
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed text-sm">
+                    Our Serviceable Obtainable Market (SOM) is the precise intersection of <strong>disposable packaging volume</strong> and <strong>high-value OOH budgets</strong>. This includes cups, burger boxes, and bags—maximizing surface area for premium impressions.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <span className="bg-blue-100 text-blue-600 p-1.5 rounded-lg text-sm">🛡️</span> Antidote to Digital Fatigue
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed text-sm">
+                    As online channels become saturated, brands are seeking tangible, real-world connections. We offer guaranteed 5-15 minute dwell times during consumption moments—something digital ads cannot match.
+                  </p>
+                </div>
             </div>
           </div>
         </motion.section>
 
         {/* Slide 6: Financial Projections (Bar Chart) */}
         <motion.section {...fadeInUp}>
+          {/* Unit Economics Section */}
+          <div className="mb-12">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-10 w-2 bg-amber-500 rounded-full" />
+              <h2 className="text-3xl font-bold text-slate-900">Unit Economics</h2>
+            </div>
+            
+            <Card className="bg-white border-none shadow-lg overflow-hidden">
+              <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div className="p-8 text-center bg-teal-50/30">
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Average Revenue</div>
+                  <div className="text-5xl font-bold text-teal-600 mb-2">£0.10</div>
+                  <div className="text-sm text-slate-600 px-4">Per Packaging Item</div>
+                  <p className="mt-4 text-xs text-slate-500 leading-relaxed">
+                    Advertisers pay for premium, high-dwell time impressions (5-15 mins) on cups, boxes, and bags.
+                  </p>
+                </div>
+                
+                <div className="p-8 text-center relative">
+                  <div className="absolute top-1/2 -left-3 -translate-y-1/2 w-6 h-6 bg-white rounded-full border border-slate-200 flex items-center justify-center text-slate-400 font-bold z-10 hidden md:flex">-</div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Cost of Goods (CoGS)</div>
+                  <div className="text-5xl font-bold text-red-500 mb-2">£0.07</div>
+                  <div className="text-sm text-slate-600 px-4">Per Packaging Item</div>
+                  <p className="mt-4 text-xs text-slate-500 leading-relaxed">
+                    Includes high-quality eco-materials, specialized printing, warehousing & nationwide distribution.
+                  </p>
+                </div>
+
+                <div className="p-8 text-center bg-amber-50/30 relative">
+                  <div className="absolute top-1/2 -left-3 -translate-y-1/2 w-6 h-6 bg-white rounded-full border border-slate-200 flex items-center justify-center text-slate-400 font-bold z-10 hidden md:flex">=</div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Gross Profit</div>
+                  <div className="text-5xl font-bold text-amber-600 mb-2">£0.03</div>
+                  <div className="text-sm text-slate-600 px-4">Per Packaging Item</div>
+                  <p className="mt-4 text-xs text-slate-500 leading-relaxed">
+                    30% Margin. Sustainable profitability without relying on external product sales.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-slate-200">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
               <div>
                 <h2 className="text-3xl font-bold text-slate-900 mb-2">Financial Trajectory</h2>
-                <p className="text-slate-600">Scaling to $15M Annual Revenue by Year 3</p>
+                <p className="text-slate-600">Scaling to £15M Annual Revenue by Year 3</p>
               </div>
               <div className="flex gap-6">
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-teal-600">40%</div>
+                  <div className="text-3xl font-bold text-teal-600">30%</div>
                   <div className="text-xs font-bold uppercase text-slate-400">Target Margin</div>
                 </div>
                 <div className="text-right">
@@ -303,14 +351,14 @@ export default function PitchDeck() {
                 <BarChart data={financialData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b'}} dy={10} />
-                  <YAxis yAxisId="left" orientation="left" stroke="#0d9488" axisLine={false} tickLine={false} label={{ value: 'Revenue ($M)', angle: -90, position: 'insideLeft', fill: '#0d9488' }} />
+                  <YAxis yAxisId="left" orientation="left" stroke="#0d9488" axisLine={false} tickLine={false} label={{ value: 'Revenue (£M)', angle: -90, position: 'insideLeft', fill: '#0d9488' }} />
                   <YAxis yAxisId="right" orientation="right" stroke="#d97706" axisLine={false} tickLine={false} label={{ value: 'Units (M)', angle: 90, position: 'insideRight', fill: '#d97706' }} />
                   <RechartsTooltip 
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                     cursor={{fill: '#f1f5f9'}}
                   />
                   <Legend wrapperStyle={{paddingTop: '20px'}} />
-                  <Bar yAxisId="left" dataKey="revenue" name="Revenue ($M)" fill="#0d9488" radius={[6, 6, 0, 0]} barSize={60} />
+                  <Bar yAxisId="left" dataKey="revenue" name="Revenue (£M)" fill="#0d9488" radius={[6, 6, 0, 0]} barSize={60} />
                   <Bar yAxisId="right" dataKey="units" name="Units Distributed (M)" fill="#d97706" radius={[6, 6, 0, 0]} barSize={60} />
                 </BarChart>
               </ResponsiveContainer>
@@ -323,7 +371,7 @@ export default function PitchDeck() {
           <Badge className="bg-amber-500 text-black mb-8 px-4 py-1 text-base">SEED ROUND</Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-4">The Ask</h2>
           <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-teal-400 mb-8">
-            $2,000,000
+            £1,500,000
           </div>
           <p className="text-2xl text-slate-300 mb-16">For 20% Equity</p>
 
@@ -341,7 +389,7 @@ export default function PitchDeck() {
                     dataKey="value"
                   >
                     {fundsData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell key={'cell-' + index} fill={entry.color} />
                     ))}
                   </Pie>
                   <RechartsTooltip contentStyle={{ borderRadius: '8px', color: '#000' }} />
