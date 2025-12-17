@@ -2,12 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Eye, Target, User, Leaf, Megaphone } from 'lucide-react';
+import { Eye, Target, HandMetal, Coffee, Pizza, Megaphone, ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion";
 
 export default function ForAdvertisers() {
+  const mediums = [
+    {
+      title: "Beverage Experience",
+      icon: Coffee,
+      items: ["Paper Cups", "Sleeves", "Napkins"],
+      desc: "Put your brand in their hands during their daily coffee ritual."
+    },
+    {
+      title: "Takeout & Delivery",
+      icon: Pizza,
+      items: ["Containers", "Bags", "Stickers"],
+      desc: "Reach customers at home or in the office with every delivery."
+    },
+    {
+      title: "Event Engagement",
+      icon: HandMetal,
+      items: ["Wristbands", "Water Labels"],
+      desc: "Be part of the excitement at festivals, concerts, and venues."
+    }
+  ];
+
   return (
     <div className="flex flex-col">
       {/* Hero */}
@@ -22,10 +43,10 @@ export default function ForAdvertisers() {
               <Megaphone className="w-8 h-8" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-              The Hyper-Local, Tangible Ad Channel <br/> Your Brand Needs.
+              Hyper-Local. Tangible. <br/>Unmissable.
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-              Put your brand directly in the hands of your customers. 20 minutes of focused attention in the UK's busiest spots.
+              Engage your target audience through the items they use, hold, and carry every day.
             </p>
             <Link to={createPageUrl('Contact') + "?tab=advertiser"}>
               <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white text-lg px-8 h-12 rounded-full">
@@ -36,128 +57,86 @@ export default function ForAdvertisers() {
         </div>
       </section>
 
-      {/* Value Props */}
+      {/* The Concept */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Why Physical Media?</h2>
+            <p className="text-slate-600">In a digital world, physical presence creates a lasting impression.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
-              <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-700">
-                <Eye className="w-7 h-7" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
+                <Target className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Unmissable Engagement</h3>
-              <p className="text-slate-600 text-sm">Your ad is held and seen for up to 20 minutes—not scrolled past like digital ads.</p>
+              <h3 className="text-xl font-bold mb-3">Hyper-Targeting</h3>
+              <p className="text-slate-600">
+                Choose venues that match your demographic. Tech offices, student cafes, family restaurants, or music festivals.
+              </p>
             </div>
             <div className="text-center p-6">
-              <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-700">
-                <Target className="w-7 h-7" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
+                <Eye className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Pinpoint Targeting</h3>
-              <p className="text-slate-600 text-sm">Choose distribution based on audience: Tech offices, Universities, or Family Cafes.</p>
+              <h3 className="text-xl font-bold mb-3">High Dwell Time</h3>
+              <p className="text-slate-600">
+                A coffee cup is held for 20 minutes. A takeout box sits on the table for dinner. Uninterrupted brand exposure.
+              </p>
             </div>
             <div className="text-center p-6">
-              <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-700">
-                <User className="w-7 h-7" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
+                <HandMetal className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Mobile Billboards</h3>
-              <p className="text-slate-600 text-sm">Customers walk your ad through the busiest high streets, extending reach.</p>
-            </div>
-            <div className="text-center p-6">
-              <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-700">
-                <Leaf className="w-7 h-7" />
-              </div>
-              <h3 className="text-lg font-bold mb-2">Eco-Friendly</h3>
-              <p className="text-slate-600 text-sm">Associate your brand with a sustainable, responsible medium. 100% Compostable.</p>
+              <h3 className="text-xl font-bold mb-3">Tactile Connection</h3>
+              <p className="text-slate-600">
+                Physical interaction builds stronger memory structures than fleeting digital impressions.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Plans */}
-      <section className="py-20 bg-slate-50" id="pricing">
+      {/* Media Options */}
+      <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Campaign Packages</h2>
-            <p className="text-slate-600">Simple, transparent pricing based on reach and impact.</p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Choose Your Medium</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {mediums.map((m, idx) => (
+              <Card key={idx} className="hover:shadow-lg transition-all border-none bg-white">
+                <CardHeader>
+                  <div className={`w-12 h-12 ${idx === 0 ? 'bg-amber-100 text-amber-600' : idx === 1 ? 'bg-orange-100 text-orange-600' : 'bg-purple-100 text-purple-600'} rounded-lg flex items-center justify-center mb-4`}>
+                    <m.icon className="w-6 h-6" />
+                  </div>
+                  <CardTitle className="text-xl">{m.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-slate-600 mb-4">{m.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {m.items.map(item => (
+                      <Badge key={item} variant="secondary" className="bg-slate-100 text-slate-700">
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Plan 1 */}
-            <Card className="border border-slate-200 bg-white hover:shadow-xl transition-all flex flex-col">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-slate-900">City Explorer</CardTitle>
-                <Badge variant="secondary" className="w-fit mt-2 bg-teal-100 text-teal-700 hover:bg-teal-100">Starter</Badge>
-              </CardHeader>
-              <CardContent className="flex-1 space-y-6">
-                <div className="text-4xl font-bold text-slate-900">1,000 <span className="text-sm font-normal text-slate-500">Cups</span></div>
-                <ul className="space-y-3 text-sm text-slate-600">
-                  <li className="flex gap-2"><CheckIcon /> ~20,000 Impressions</li>
-                  <li className="flex gap-2"><CheckIcon /> 5 Distribution Locations</li>
-                  <li className="flex gap-2"><CheckIcon /> Standard Design Support</li>
-                  <li className="flex gap-2"><CheckIcon /> 2 Week Campaign Duration</li>
-                </ul>
-              </CardContent>
-              <CardFooter>
-                <Link to={createPageUrl('Contact') + "?plan=Explorer"} className="w-full">
-                  <Button variant="outline" className="w-full border-teal-600 text-teal-600 hover:bg-teal-50">Select Explorer</Button>
-                </Link>
-              </CardFooter>
-            </Card>
-
-            {/* Plan 2 */}
-            <Card className="border-2 border-teal-600 bg-white shadow-xl scale-105 z-10 flex flex-col relative">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                Most Popular
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-slate-900">Regional Connect</CardTitle>
-                <Badge variant="secondary" className="w-fit mt-2 bg-teal-600 text-white hover:bg-teal-700">Growth</Badge>
-              </CardHeader>
-              <CardContent className="flex-1 space-y-6">
-                <div className="text-4xl font-bold text-slate-900">5,000 <span className="text-sm font-normal text-slate-500">Cups</span></div>
-                <ul className="space-y-3 text-sm text-slate-600">
-                  <li className="flex gap-2"><CheckIcon /> ~100,000 Impressions</li>
-                  <li className="flex gap-2"><CheckIcon /> 15 Distribution Locations</li>
-                  <li className="flex gap-2"><CheckIcon /> Premium Design Service</li>
-                  <li className="flex gap-2"><CheckIcon /> 4 Week Campaign Duration</li>
-                  <li className="flex gap-2"><CheckIcon /> Targeted Location Selection</li>
-                </ul>
-              </CardContent>
-              <CardFooter>
-                <Link to={createPageUrl('Contact') + "?plan=Connect"} className="w-full">
-                  <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white shadow-lg shadow-teal-600/20">Select Connect</Button>
-                </Link>
-              </CardFooter>
-            </Card>
-
-            {/* Plan 3 */}
-            <Card className="border border-slate-200 bg-white hover:shadow-xl transition-all flex flex-col">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-slate-900">National Impact</CardTitle>
-                <Badge variant="secondary" className="w-fit mt-2 bg-slate-100 text-slate-700 hover:bg-slate-100">Enterprise</Badge>
-              </CardHeader>
-              <CardContent className="flex-1 space-y-6">
-                <div className="text-4xl font-bold text-slate-900">20,000+ <span className="text-sm font-normal text-slate-500">Cups</span></div>
-                <ul className="space-y-3 text-sm text-slate-600">
-                  <li className="flex gap-2"><CheckIcon /> ~400,000+ Impressions</li>
-                  <li className="flex gap-2"><CheckIcon /> City-Wide Distribution</li>
-                  <li className="flex gap-2"><CheckIcon /> Full Creative Agency Support</li>
-                  <li className="flex gap-2"><CheckIcon /> Multi-Month Campaign</li>
-                  <li className="flex gap-2"><CheckIcon /> Impact Reporting & Analytics</li>
-                </ul>
-              </CardContent>
-              <CardFooter>
-                <Link to={createPageUrl('Contact') + "?plan=Impact"} className="w-full">
-                  <Button variant="outline" className="w-full border-slate-400 text-slate-700 hover:bg-slate-50">Contact Sales</Button>
-                </Link>
-              </CardFooter>
-            </Card>
-          </div>
+      {/* CTA */}
+      <section className="py-20 bg-teal-600 text-white text-center">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-6">Ready to reach your audience?</h2>
+          <Link to={createPageUrl('Contact') + "?tab=advertiser"}>
+            <Button size="lg" className="bg-white text-teal-700 hover:bg-teal-50 px-8 h-12 text-lg">
+              Get A Quote <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
         </div>
       </section>
     </div>
   );
-}
-
-function CheckIcon() {
-  return <div className="w-5 h-5 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center shrink-0 text-[10px]">✔</div>
 }

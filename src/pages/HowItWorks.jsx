@@ -12,7 +12,7 @@ export default function HowItWorks() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Cupvertising in 3 Simple Steps</h1>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            We've streamlined the process to make cup advertising effortless for everyone involved.
+            We've streamlined the process to make product advertising effortless for everyone involved.
           </p>
         </div>
       </section>
@@ -48,7 +48,7 @@ export default function HowItWorks() {
 
                 <h3 className="text-xl font-bold mb-4 text-slate-900">Design & Production</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Advertiser supplies the artwork (or we design it). We print the full-wrap, high-quality eco-friendly cups through our trusted manufacturers.
+                  Advertiser supplies the artwork (or we design it). We print the full-wrap, high-quality eco-friendly products through our trusted manufacturers.
                 </p>
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function HowItWorks() {
 
                 <h3 className="text-xl font-bold mb-4 text-slate-900">Distribution & Exposure</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  We deliver the free cups to our partners, and the campaign begins! Your message is now a mobile, daily impression across the UK.
+                  We deliver the free products to our partners, and the campaign begins! Your message is now a mobile, daily impression across the UK.
                 </p>
               </div>
             </div>

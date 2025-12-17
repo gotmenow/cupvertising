@@ -99,7 +99,7 @@ export default function Layout({ children }) {
                 <span className="text-xl font-bold">Cupvertising</span>
               </div>
               <p className="text-slate-400 max-w-sm">
-                The UK's premier cup advertising network. Connecting local businesses with free supplies and brands with hands-on exposure.
+                The UK's premier physical media network. Connecting local businesses with free inventory and brands with hands-on exposure.
               </p>
             </div>
             <div>
@@ -113,7 +113,7 @@ export default function Layout({ children }) {
             <div>
               <h3 className="font-bold text-white mb-4">Services</h3>
               <ul className="space-y-2">
-                <li><Link to={createPageUrl('ForBusinesses')} className="hover:text-amber-500 transition-colors">For Cup Receivers</Link></li>
+                <li><Link to={createPageUrl('ForBusinesses')} className="hover:text-amber-500 transition-colors">For Distribution Partners</Link></li>
                 <li><Link to={createPageUrl('ForAdvertisers')} className="hover:text-amber-500 transition-colors">For Advertisers</Link></li>
                 <li><Link to={createPageUrl('HowItWorks')} className="hover:text-amber-500 transition-colors">How It Works</Link></li>
               </ul>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
@@ -6,41 +6,54 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/components/ui/use-toast";
-import { Loader2, Coffee, Megaphone } from "lucide-react";
+import { Loader2, Package, Megaphone, CheckCircle2 } from "lucide-react";
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
   
-  // Determine default tab from URL query param 'tab' (partner vs advertiser)
   const defaultTab = searchParams.get('tab') === 'partner' ? 'partner' : 'advertiser';
-  
-  // Pre-fill plan if provided
-  const prefillPlan = searchParams.get('plan') ? `Edinburgh ${searchParams.get('plan')}` : '';
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // Forms State
+  // Partner Form State
   const [partnerForm, setPartnerForm] = useState({
-    name: '', business_name: '', business_type: '', weekly_usage: '', email: '', phone: '', message: ''
+    name: '', business_name: '', business_type: '', weekly_volume: '', email: '', phone: '', address: '', message: '',
+    interested_products: []
   });
   
+  // Advertiser Form State
   const [advertiserForm, setAdvertiserForm] = useState({
-    name: '', business_name: '', target_audience: '', estimated_plan: prefillPlan, email: '', phone: '', message: ''
+    name: '', business_name: '', target_audience: '', campaign_budget: '', email: '', phone: '', message: '',
+    interested_mediums: []
   });
 
-  // Handlers
+  const productOptions = [
+    "Core Beverage (Cups, Sleeves, Napkins)",
+    "Packaging (Containers, Bags)",
+    "Condiments (Sugar, Wipes)",
+    "Event & Utility (Wristbands, Labels)"
+  ];
+
+  const mediumOptions = [
+    "Beverage Cups & Napkins",
+    "Takeout Containers & Bags",
+    "Condiments & Sachets",
+    "Event Wristbands & Labels"
+  ];
+
   const handlePartnerSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
       await base44.entities.DistributorEnquiry.create(partnerForm);
       setSubmitted(true);
-      toast({ title: "Application Received!", description: "We'll be in touch shortly to schedule your cup delivery." });
+      toast({ title: "Application Received!", description: "We'll be in touch regarding your free inventory." });
     } catch (error) {
       console.error(error);
       toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
@@ -64,16 +77,32 @@ export default function Contact() {
     }
   };
 
+  const toggleProduct = (item) => {
+    setPartnerForm(prev => {
+      const current = prev.interested_products || [];
+      if (current.includes(item)) return { ...prev, interested_products: current.filter(i => i !== item) };
+      return { ...prev, interested_products: [...current, item] };
+    });
+  };
+
+  const toggleMedium = (item) => {
+    setAdvertiserForm(prev => {
+      const current = prev.interested_mediums || [];
+      if (current.includes(item)) return { ...prev, interested_mediums: current.filter(i => i !== item) };
+      return { ...prev, interested_mediums: [...current, item] };
+    });
+  };
+
   if (submitted) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center bg-slate-50 p-4">
         <Card className="max-w-md w-full text-center p-8">
           <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Megaphone className="w-8 h-8" />
+            <CheckCircle2 className="w-8 h-8" />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h2>
           <p className="text-slate-600 mb-6">
-            We've received your details and are excited to explore a partnership with you. One of our team members will be in touch within 24 hours.
+            We've received your details. One of our team members will be in touch within 24 hours to discuss the next steps.
           </p>
           <Button onClick={() => setSubmitted(false)} variant="outline">Send Another Message</Button>
         </Card>
@@ -85,134 +114,168 @@ export default function Contact() {
     <div className="min-h-screen bg-slate-50 py-12 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ready to Start?</h1>
-          <p className="text-lg text-slate-600">Tell us what you need and let's get moving.</p>
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Let's Connect</h1>
+          <p className="text-lg text-slate-600">Whether you need free supplies or effective advertising, we're here.</p>
         </div>
 
         <Card className="shadow-xl border-none bg-white">
           <Tabs defaultValue={defaultTab} className="w-full">
             <TabsList className="grid w-full grid-cols-2 h-16 p-1 bg-slate-100 rounded-t-xl">
               <TabsTrigger value="partner" className="h-full text-base font-medium data-[state=active]:bg-amber-600 data-[state=active]:text-white transition-all">
-                <Coffee className="w-5 h-5 mr-2" /> I Want FREE Cups (Distributor)
+                <Package className="w-5 h-5 mr-2" /> I Want Free Supplies (Partner)
               </TabsTrigger>
               <TabsTrigger value="advertiser" className="h-full text-base font-medium data-[state=active]:bg-teal-600 data-[state=active]:text-white transition-all">
                 <Megaphone className="w-5 h-5 mr-2" /> I Want to Advertise (Client)
               </TabsTrigger>
             </TabsList>
 
-            {/* Partner Form Content */}
+            {/* Partner Form */}
             <TabsContent value="partner" className="p-6 md:p-8">
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-slate-900">Partner Application</h2>
-                <p className="text-slate-500">Join our network of cafes and offices receiving free premium cups.</p>
+                <p className="text-slate-500">Apply to receive free, high-quality inventory for your business.</p>
               </div>
               <form onSubmit={handlePartnerSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="p_name">Your Name</Label>
-                    <Input id="p_name" required placeholder="John Doe" value={partnerForm.name} onChange={e => setPartnerForm({...partnerForm, name: e.target.value})} />
+                    <Label htmlFor="p_name">Contact Name</Label>
+                    <Input id="p_name" required value={partnerForm.name} onChange={e => setPartnerForm({...partnerForm, name: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="p_business">Business Name</Label>
-                    <Input id="p_business" required placeholder="The Daily Grind Cafe" value={partnerForm.business_name} onChange={e => setPartnerForm({...partnerForm, business_name: e.target.value})} />
+                    <Label htmlFor="p_business">Business/Event Name</Label>
+                    <Input id="p_business" required value={partnerForm.business_name} onChange={e => setPartnerForm({...partnerForm, business_name: e.target.value})} />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                   <div className="space-y-2">
-                    <Label htmlFor="p_type">Business Type</Label>
+                    <div className="space-y-2">
+                    <Label>Business Type</Label>
                     <Select value={partnerForm.business_type} onValueChange={v => setPartnerForm({...partnerForm, business_type: v})}>
                       <SelectTrigger><SelectValue placeholder="Select type" /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="Cafe">Cafe</SelectItem>
                         <SelectItem value="Restaurant">Restaurant</SelectItem>
-                        <SelectItem value="Office">Office</SelectItem>
+                        <SelectItem value="Food Truck">Food Truck</SelectItem>
                         <SelectItem value="Event Organiser">Event Organiser</SelectItem>
+                        <SelectItem value="Office">Office</SelectItem>
                         <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="p_usage">Weekly Cup Usage</Label>
-                     <Select value={partnerForm.weekly_usage} onValueChange={v => setPartnerForm({...partnerForm, weekly_usage: v})}>
-                      <SelectTrigger><SelectValue placeholder="Estimated usage" /></SelectTrigger>
+                    <Label>Estimated Weekly Volume</Label>
+                      <Select value={partnerForm.weekly_volume} onValueChange={v => setPartnerForm({...partnerForm, weekly_volume: v})}>
+                      <SelectTrigger><SelectValue placeholder="Select volume" /></SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Less than 500">Less than 500</SelectItem>
-                        <SelectItem value="500 - 1,000">500 - 1,000</SelectItem>
-                        <SelectItem value="1,000 - 5,000">1,000 - 5,000</SelectItem>
-                        <SelectItem value="5,000+">5,000+</SelectItem>
+                        <SelectItem value="Low (< 500 items)">Low (&lt; 500 items)</SelectItem>
+                        <SelectItem value="Medium (500 - 2,000 items)">Medium (500 - 2,000 items)</SelectItem>
+                        <SelectItem value="High (2,000 - 10,000 items)">High (2,000 - 10,000 items)</SelectItem>
+                        <SelectItem value="Enterprise (10,000+ items)">Enterprise (10,000+ items)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
+                <div className="space-y-3">
+                  <Label>Products of Interest</Label>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    {productOptions.map(item => (
+                      <div key={item} className="flex items-center space-x-2">
+                        <Checkbox id={`prod-${item}`} checked={partnerForm.interested_products?.includes(item)} onCheckedChange={() => toggleProduct(item)} />
+                        <label htmlFor={`prod-${item}`} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          {item}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="p_email">Email Address</Label>
-                    <Input id="p_email" type="email" required placeholder="john@example.com" value={partnerForm.email} onChange={e => setPartnerForm({...partnerForm, email: e.target.value})} />
+                    <Label htmlFor="p_email">Email</Label>
+                    <Input id="p_email" type="email" required value={partnerForm.email} onChange={e => setPartnerForm({...partnerForm, email: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="p_phone">Phone Number</Label>
-                    <Input id="p_phone" type="tel" placeholder="0131 123 4567" value={partnerForm.phone} onChange={e => setPartnerForm({...partnerForm, phone: e.target.value})} />
+                    <Label htmlFor="p_phone">Phone</Label>
+                    <Input id="p_phone" type="tel" value={partnerForm.phone} onChange={e => setPartnerForm({...partnerForm, phone: e.target.value})} />
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="p_address">Delivery Address / Location</Label>
+                  <Input id="p_address" value={partnerForm.address} onChange={e => setPartnerForm({...partnerForm, address: e.target.value})} />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="p_msg">Additional Details (Optional)</Label>
-                  <Textarea id="p_msg" placeholder="Any specific requirements or questions?" value={partnerForm.message} onChange={e => setPartnerForm({...partnerForm, message: e.target.value})} />
+                  <Label htmlFor="p_msg">Additional Details</Label>
+                  <Textarea id="p_msg" placeholder="Any specific requirements?" value={partnerForm.message} onChange={e => setPartnerForm({...partnerForm, message: e.target.value})} />
                 </div>
 
                 <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700 text-lg h-12" disabled={isSubmitting}>
-                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Apply for Free Cups'}
+                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Apply for Free Supplies'}
                 </Button>
               </form>
             </TabsContent>
 
-            {/* Advertiser Form Content */}
+            {/* Advertiser Form */}
             <TabsContent value="advertiser" className="p-6 md:p-8">
-               <div className="mb-6">
+                <div className="mb-6">
                 <h2 className="text-2xl font-bold text-slate-900">Advertiser Enquiry</h2>
-                <p className="text-slate-500">Connect with your audience through our unique medium.</p>
+                <p className="text-slate-500">Connect with your audience through our unique physical mediums.</p>
               </div>
               <form onSubmit={handleAdvertiserSubmit} className="space-y-6">
-                 <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="a_name">Your Name</Label>
-                    <Input id="a_name" required placeholder="Jane Smith" value={advertiserForm.name} onChange={e => setAdvertiserForm({...advertiserForm, name: e.target.value})} />
+                    <Label htmlFor="a_name">Contact Name</Label>
+                    <Input id="a_name" required value={advertiserForm.name} onChange={e => setAdvertiserForm({...advertiserForm, name: e.target.value})} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="a_business">Business Name</Label>
-                    <Input id="a_business" required placeholder="Tech Solutions Ltd" value={advertiserForm.business_name} onChange={e => setAdvertiserForm({...advertiserForm, business_name: e.target.value})} />
+                    <Input id="a_business" required value={advertiserForm.business_name} onChange={e => setAdvertiserForm({...advertiserForm, business_name: e.target.value})} />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                   <div className="space-y-2">
+                    <div className="space-y-2">
                     <Label htmlFor="a_target">Target Audience / Industry</Label>
-                    <Input id="a_target" placeholder="e.g. Students, Tech Workers..." value={advertiserForm.target_audience} onChange={e => setAdvertiserForm({...advertiserForm, target_audience: e.target.value})} />
+                    <Input id="a_target" placeholder="e.g. Students, Tech..." value={advertiserForm.target_audience} onChange={e => setAdvertiserForm({...advertiserForm, target_audience: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="a_plan">Estimated Plan</Label>
-                     <Select value={advertiserForm.estimated_plan} onValueChange={v => setAdvertiserForm({...advertiserForm, estimated_plan: v})}>
-                      <SelectTrigger><SelectValue placeholder="Select a plan" /></SelectTrigger>
+                    <Label>Estimated Budget</Label>
+                      <Select value={advertiserForm.campaign_budget} onValueChange={v => setAdvertiserForm({...advertiserForm, campaign_budget: v})}>
+                      <SelectTrigger><SelectValue placeholder="Select budget" /></SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="City Explorer">City Explorer</SelectItem>
-                        <SelectItem value="Regional Connect">Regional Connect</SelectItem>
-                        <SelectItem value="National Impact">National Impact</SelectItem>
-                        <SelectItem value="Unsure">Unsure / Need Advice</SelectItem>
+                        <SelectItem value="Starter (< £1k)">Starter (&lt; £1k)</SelectItem>
+                        <SelectItem value="Growth (£1k - £5k)">Growth (£1k - £5k)</SelectItem>
+                        <SelectItem value="Scale (£5k - £20k)">Scale (£5k - £20k)</SelectItem>
+                        <SelectItem value="Enterprise (£20k+)">Enterprise (£20k+)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
-                 <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <Label>Mediums of Interest</Label>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    {mediumOptions.map(item => (
+                      <div key={item} className="flex items-center space-x-2">
+                        <Checkbox id={`med-${item}`} checked={advertiserForm.interested_mediums?.includes(item)} onCheckedChange={() => toggleMedium(item)} />
+                        <label htmlFor={`med-${item}`} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                          {item}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="a_email">Email Address</Label>
-                    <Input id="a_email" type="email" required placeholder="jane@example.com" value={advertiserForm.email} onChange={e => setAdvertiserForm({...advertiserForm, email: e.target.value})} />
+                    <Label htmlFor="a_email">Email</Label>
+                    <Input id="a_email" type="email" required value={advertiserForm.email} onChange={e => setAdvertiserForm({...advertiserForm, email: e.target.value})} />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="a_phone">Phone Number</Label>
-                    <Input id="a_phone" type="tel" placeholder="0131 123 4567" value={advertiserForm.phone} onChange={e => setAdvertiserForm({...advertiserForm, phone: e.target.value})} />
+                    <Label htmlFor="a_phone">Phone</Label>
+                    <Input id="a_phone" type="tel" value={advertiserForm.phone} onChange={e => setAdvertiserForm({...advertiserForm, phone: e.target.value})} />
                   </div>
                 </div>
                 
@@ -222,7 +285,7 @@ export default function Contact() {
                 </div>
 
                 <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-lg h-12" disabled={isSubmitting}>
-                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Request Media Kit'}
+                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Request Quote'}
                 </Button>
               </form>
             </TabsContent>

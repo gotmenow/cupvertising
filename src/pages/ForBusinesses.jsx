@@ -3,10 +3,29 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Truck, ShieldCheck, Heart, Coffee } from 'lucide-react';
+import { Check, Truck, Coins, Leaf, ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion";
 
 export default function ForBusinesses() {
+  const products = [
+    {
+      category: "Core Beverage",
+      items: ["Paper Coffee Cups (4oz - 16oz)", "Cup Sleeves", "Napkins"]
+    },
+    {
+      category: "Packaging & Delivery",
+      items: ["Takeout Containers (Clamshells)", "Paper Bags", "Cutlery Wrappers", "Pizza Box Inserts", "Tamper-Proof Stickers"]
+    },
+    {
+      category: "Condiments & Accessories",
+      items: ["Sugar/Sweetener Packets", "Condiment Sachets", "Wet Wipes", "Cardboard Coasters"]
+    },
+    {
+      category: "Event & Utility",
+      items: ["Tyvek Event Wristbands", "Water Bottle Labels"]
+    }
+  ];
+
   return (
     <div className="flex flex-col">
       {/* Hero */}
@@ -18,98 +37,100 @@ export default function ForBusinesses() {
             transition={{ duration: 0.5 }}
           >
             <div className="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-lg shadow-amber-600/30">
-              <Coffee className="w-8 h-8" />
+              <Coins className="w-8 h-8" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Stop Buying Cups. <br/>Start Saving Money.
+              Reduce Your Overheads. <br/>Zero Cost Inventory.
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-              The UK's smartest supply chain. Join hundreds of local cafes and businesses getting their essential supplies for free.
+              We provide restaurants, cafes, and event organizers with high-quality, essential supplies completely free of charge.
             </p>
             <Link to={createPageUrl('Contact') + "?tab=partner"}>
               <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 h-12 rounded-full">
-                Apply for Free Cup Delivery
+                Apply for Free Inventory
               </Button>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Benefits Grid */}
+      {/* Available Products */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-slate-100 shadow-lg hover:shadow-xl transition-all">
-              <CardContent className="p-8 flex gap-5">
-                <div className="shrink-0 w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
-                  <Truck className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">FREE, Reliable Supply</h3>
-                  <p className="text-slate-600">
-                    Never pay for cups again. We set up a recurring delivery schedule based on your usage, ensuring you never run out of stock.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900">What You Get</h2>
+            <p className="text-slate-600 mt-2">Customizable, recyclable products to run your business.</p>
+          </div>
 
-            <Card className="border-slate-100 shadow-lg hover:shadow-xl transition-all">
-              <CardContent className="p-8 flex gap-5">
-                <div className="shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Zero-Risk Partnership</h3>
-                  <p className="text-slate-600">
-                    We manage everything - the advertising clients, the printing, and the logistics. You just brew the coffee and serve.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-100 shadow-lg hover:shadow-xl transition-all">
-              <CardContent className="p-8 flex gap-5">
-                <div className="shrink-0 w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center">
-                  <Heart className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Support Local Ecosystem</h3>
-                  <p className="text-slate-600">
-                    Help fund other local, non-competing businesses. Be part of a network that helps local high streets thrive.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-100 shadow-lg hover:shadow-xl transition-all">
-              <CardContent className="p-8 flex gap-5">
-                <div className="shrink-0 w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center">
-                  <Check className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Quality Guaranteed</h3>
-                  <p className="text-slate-600">
-                    We only provide high-quality, double-walled, compostable cups that keep drinks hot and hands cool. Premium feel, zero cost.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {products.map((cat, idx) => (
+              <Card key={idx} className="bg-slate-50 border-none shadow-sm h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg font-bold text-slate-900">{cat.category}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {cat.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                        <Check className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Image Break */}
-      <section className="h-64 md:h-96 relative overflow-hidden">
-         <img 
-            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop" 
-            alt="Busy Cafe" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-slate-900/50 flex items-center justify-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-center px-4">
-              Join 500+ UK Businesses Saving £1000s Annually
-            </h2>
+      {/* Benefits Grid */}
+      <section className="py-20 bg-slate-100">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-4">
+                <Coins className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Direct Cost Savings</h3>
+              <p className="text-slate-600">
+                Eliminate the cost of purchasing disposables. Keep that money in your business to invest in growth or staff.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                <Leaf className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Sustainability</h3>
+              <p className="text-slate-600">
+                All our products meet high standards for durability and recyclability or compostability, boosting your green credentials.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-4">
+                <Truck className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Reliable Supply</h3>
+              <p className="text-slate-600">
+                Scheduled deliveries ensure you never run out of the essentials. We handle the logistics; you handle the service.
+              </p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-white text-center">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">Ready to stop paying for supplies?</h2>
+          <Link to={createPageUrl('Contact') + "?tab=partner"}>
+            <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8">
+              Join as a Distribution Partner <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
+        </div>
       </section>
     </div>
   );
