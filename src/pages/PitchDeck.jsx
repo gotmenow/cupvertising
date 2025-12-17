@@ -406,9 +406,9 @@ export default function PitchDeck() {
                     <span className="font-bold text-white">{item.value}%</span>
                   </div>
                   <p className="text-sm text-slate-400">
-                    {i === 0 && "Fund first 6 months of production for 100+ UK partners."}
-                    {i === 1 && "Hire dedicated UK sales team & expand network."}
-                    {i === 2 && "Develop proprietary logistics & ad-tracking software."}
+                    {i === 0 && "Secure inventory for initial 50-venue pilot."}
+                    {i === 1 && "Founder-led sales + 1 Key Hire to secure ad partners."}
+                    {i === 2 && "Basic MVP tracking tools and legal setup."}
                   </p>
                 </div>
               ))}
