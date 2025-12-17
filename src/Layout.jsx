@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, Coffee, Megaphone, Info, Mail, Home } from 'lucide-react';
+import { Menu, X, Coffee, Megaphone, Info, Mail, Home, Presentation, Users } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 export default function Layout({ children }) {
@@ -11,12 +11,13 @@ export default function Layout({ children }) {
   const isActive = (path) => location.pathname === path;
 
   const navItems = [
-    { name: 'Home', path: '/', icon: Home },
-    { name: 'For Businesses', path: '/ForBusinesses', icon: Coffee },
-    { name: 'For Advertisers', path: '/ForAdvertisers', icon: Megaphone },
-    { name: 'How It Works', path: '/HowItWorks', icon: Info },
-    { name: 'Contact', path: '/Contact', icon: Mail },
-  ];
+        { name: 'Home', path: '/', icon: Home },
+        { name: 'For Businesses', path: '/ForBusinesses', icon: Coffee },
+        { name: 'For Advertisers', path: '/ForAdvertisers', icon: Megaphone },
+        { name: 'Pitch Deck', path: '/PitchDeck', icon: Presentation },
+        { name: 'About Us', path: '/About', icon: Users },
+        { name: 'Contact', path: '/Contact', icon: Mail },
+      ];
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans text-slate-900">
