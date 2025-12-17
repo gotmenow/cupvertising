@@ -130,10 +130,10 @@ export default function PitchDeck() {
           
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { title: "Core Beverage", img: "https://images.unsplash.com/photo-1577963297123-5e93344b5843?q=80&w=2070&auto=format&fit=crop", desc: "Cups, Sleeves, Napkins" },
-              { title: "Packaging", img: "https://images.unsplash.com/photo-1585510667086-a7c827c1917f?q=80&w=2070&auto=format&fit=crop", desc: "Boxes, Bags, Stickers" },
-              { title: "Condiments", img: "https://images.unsplash.com/photo-1626132646636-f38b03061266?q=80&w=2070&auto=format&fit=crop", desc: "Sachets, Wipes, Coasters" },
-              { title: "Event Utility", img: "https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?q=80&w=1887&auto=format&fit=crop", desc: "Wristbands, Labels" }
+              { title: "Core Beverage", img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop", desc: "Cups, Sleeves, Napkins" },
+              { title: "Packaging", img: "https://images.unsplash.com/photo-1595246140625-573b715d11dc?q=80&w=800&auto=format&fit=crop", desc: "Boxes, Bags, Stickers" },
+              { title: "Condiments", img: "https://images.unsplash.com/photo-1575480579998-1e43c5b96915?q=80&w=800&auto=format&fit=crop", desc: "Sachets, Wipes, Coasters" },
+              { title: "Event Utility", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", desc: "Wristbands, Labels" }
             ].map((item, i) => (
               <div key={i} className="group relative h-64 rounded-2xl overflow-hidden shadow-lg">
                 <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
