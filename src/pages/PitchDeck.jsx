@@ -301,7 +301,7 @@ export default function PitchDeck() {
                   <div className="text-5xl font-bold text-teal-600 mb-2">£0.10</div>
                   <div className="text-sm text-slate-600 px-4">Per Packaging Item</div>
                   <p className="mt-4 text-xs text-slate-500 leading-relaxed">
-                    Advertisers pay for premium, high-dwell time impressions (5-15 mins) on cups, boxes, and bags.
+                    Justified by guaranteed <strong>5-15 min dwell time</strong> and geo-targeting (e.g., offices, events). clear ROI advantage over fleeting OOH.
                   </p>
                 </div>
                 
@@ -311,7 +311,7 @@ export default function PitchDeck() {
                   <div className="text-5xl font-bold text-red-500 mb-2">£0.07</div>
                   <div className="text-sm text-slate-600 px-4">Per Packaging Item</div>
                   <p className="mt-4 text-xs text-slate-500 leading-relaxed">
-                    Includes high-quality eco-materials, specialized printing, warehousing & nationwide distribution.
+                    Includes water-based barrier coatings, flexographic printing, warehousing, and nationwide distribution.
                   </p>
                 </div>
 
@@ -321,7 +321,7 @@ export default function PitchDeck() {
                   <div className="text-5xl font-bold text-amber-600 mb-2">£0.03</div>
                   <div className="text-sm text-slate-600 px-4">Per Packaging Item</div>
                   <p className="mt-4 text-xs text-slate-500 leading-relaxed">
-                    30% Margin. Sustainable profitability without relying on external product sales.
+                    Consistent margin covers overheads, ensuring scalability without relying on product sales.
                   </p>
                 </div>
               </div>
