@@ -12,18 +12,18 @@ import {
 import { motion } from "framer-motion";
 
 export default function PitchDeck() {
-  // Financial Data for Charts
+  // Financial Data for Charts (Revised for Pre-Seed Realism)
   const financialData = [
-    { name: 'Year 1 (Pilot)', revenue: 0.75, units: 1.5 },
-    { name: 'Year 3 (Scale)', revenue: 15, units: 50 },
-    { name: 'Year 5 (Global)', revenue: 45, units: 150 },
+    { name: 'Year 1 (Pilot)', revenue: 0.25, units: 0.5 },
+    { name: 'Year 3 (Scale)', revenue: 3.5, units: 12 },
+    { name: 'Year 5 (National)', revenue: 15, units: 50 },
   ];
 
-  // Use of Funds Data
+  // Use of Funds Data (Focused on Pilot Execution)
   const fundsData = [
-    { name: 'Inventory & Production', value: 40, color: '#d97706' }, // amber-600
-    { name: 'Sales & Biz Dev', value: 35, color: '#0d9488' }, // teal-600
-    { name: 'Logistics Tech', value: 25, color: '#475569' }, // slate-600
+    { name: 'Pilot Inventory', value: 45, color: '#d97706' }, // amber-600
+    { name: 'Founder Sales Ops', value: 35, color: '#0d9488' }, // teal-600
+    { name: 'Legal & Admin', value: 20, color: '#475569' }, // slate-600
   ];
 
   const fadeInUp = {
