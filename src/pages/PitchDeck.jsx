@@ -331,8 +331,8 @@ export default function PitchDeck() {
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-slate-200">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-2">Financial Trajectory</h2>
-                <p className="text-slate-600">Scaling to £15M Annual Revenue by Year 3</p>
+                <h2 className="text-3xl font-bold text-slate-900 mb-2">Conservative Projections</h2>
+                <p className="text-slate-600">Focus on sustainable growth and unit profitability.</p>
               </div>
               <div className="flex gap-6">
                 <div className="text-right">
@@ -340,7 +340,7 @@ export default function PitchDeck() {
                   <div className="text-xs font-bold uppercase text-slate-400">Target Margin</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-amber-600">50M</div>
+                  <div className="text-3xl font-bold text-amber-600">12M</div>
                   <div className="text-xs font-bold uppercase text-slate-400">Year 3 Units</div>
                 </div>
               </div>
