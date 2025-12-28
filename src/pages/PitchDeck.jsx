@@ -130,9 +130,13 @@ export default function PitchDeck() {
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { title: "Food & Hospitality", img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop", desc: "Cups, Boxes, Bags, Cutlery" },
-              { title: "Corporate & School", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop", desc: "Paper, Notepads, Lanyards" },
-              { title: "Events & Public", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", desc: "Wristbands, Pharmacy Bags" },
-              { title: "Ops & Hygiene", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop", desc: "Bin Liners, Receipts, Wipes" }
+              { title: "Cleaning & Hygiene", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop", desc: "Bin Liners, Towels, Wipes" },
+              { title: "Logistics & Ops", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop", desc: "Inserts, Stickers, Receipts" },
+              { title: "Office & Retail", img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop", desc: "Paper, Stationery, Tape" },
+              { title: "Schools & Edu", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop", desc: "Notebooks, Exam Sheets" },
+              { title: "Events & Festivals", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", desc: "Wristbands, Cups, Tickets" },
+              { title: "Healthcare", img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop", desc: "Pharmacy Bags, Cups" },
+              { title: "Council & Public", img: "https://images.unsplash.com/photo-1493723843689-d20b49635984?q=80&w=800&auto=format&fit=crop", desc: "Litter Bags, Newsletters" }
             ].map((item, i) => (
               <div key={i} className="group relative h-64 rounded-2xl overflow-hidden shadow-lg">
                 <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
