@@ -9,20 +9,20 @@ import { motion } from "framer-motion";
 export default function ForBusinesses() {
   const products = [
     {
-      category: "Core Beverage",
-      items: ["Paper Coffee Cups (4oz - 16oz)", "Cup Sleeves", "Napkins"]
+      category: "Beverage Essentials",
+      items: ["Coffee Cups (4oz-16oz)", "Paper Straws", "Sleeves", "Napkins"]
     },
     {
-      category: "Packaging & Delivery",
-      items: ["Takeout Containers (Clamshells)", "Paper Bags", "Cutlery Wrappers", "Pizza Box Inserts", "Tamper-Proof Stickers"]
+      category: "Food Packaging",
+      items: ["Bio-Boxes & Clamshells", "Takeout Bags", "Compostable Cutlery", "Tamper-Proof Stickers"]
     },
     {
-      category: "Condiments & Accessories",
-      items: ["Sugar/Sweetener Packets", "Condiment Sachets", "Wet Wipes", "Cardboard Coasters"]
+      category: "Eco-Operations",
+      items: ["Biodegradable Bin Liners", "Eco-Cleaning Supplies", "Sanitizing Wipes", "Coasters"]
     },
     {
-      category: "Event & Utility",
-      items: ["Tyvek Event Wristbands", "Water Bottle Labels"]
+      category: "Specialty & Reusables",
+      items: ["Branded Reusable Bottles", "Event Wristbands", "Tote Bags", "Water Labels"]
     }
   ];
 
