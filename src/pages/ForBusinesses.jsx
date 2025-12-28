@@ -112,9 +112,9 @@ export default function ForBusinesses() {
               <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-4">
                 <Truck className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Reliable Supply</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Automated Restocking</h3>
               <p className="text-slate-600">
-                Scheduled deliveries ensure you never run out of the essentials. We handle the logistics; you handle the service.
+                Subscription-style scheduled deliveries ensure you never run out. Our predictive system manages your inventory flow.
               </p>
             </div>
           </div>
