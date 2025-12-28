@@ -52,6 +52,9 @@ export default function PitchDeck() {
             <Badge className="bg-amber-500 hover:bg-amber-600 text-black text-lg py-1 px-6 mb-6 font-bold">
               INVESTOR PRESENTATION
             </Badge>
+            <p className="text-slate-400 font-medium tracking-widest uppercase mb-4 text-sm bg-slate-800/50 inline-block px-4 py-1 rounded-full border border-slate-700">
+              A Subsidiary of Gotmenow LTD
+            </p>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
               The Ad-Cup Model
             </h1>
@@ -447,6 +450,10 @@ export default function PitchDeck() {
           </div>
         </motion.section>
 
+      </div>
+      
+      <div className="container mx-auto px-4 py-8 text-center text-slate-400 text-sm border-t border-slate-200 mt-12">
+        <p>© {new Date().getFullYear()} Cupvertising. A trading name of Gotmenow LTD. All Rights Reserved.</p>
       </div>
     </div>
   );
