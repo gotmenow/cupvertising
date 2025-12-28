@@ -75,51 +75,87 @@ export default function ForAdvertisers() {
         </div>
       </section>
 
-      {/* The Concept */}
+      {/* Tech Stack - Smart Assets */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Why Physical Media?</h2>
-            <p className="text-slate-600">In a digital world, physical presence creates a lasting impression.</p>
+            <Badge className="bg-amber-100 text-amber-800 mb-4 px-4 py-1">Printed-Logic Technology</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Beyond Static QR Codes</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              We turn physical packaging into interactive "Smart Assets" using advanced Nature-Free technologies.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-          <div className="text-center p-6">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
-              <Target className="w-8 h-8" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Hyper-Targeting</h3>
-            <p className="text-sm text-slate-600">
-              Match venues to demographics. Tech hubs, universities, or festivals.
-            </p>
-          </div>
-          <div className="text-center p-6">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
-              <Eye className="w-8 h-8" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">High Dwell Time</h3>
-            <p className="text-sm text-slate-600">
-              20+ mins of exposure per item. Uninterrupted engagement.
-            </p>
-          </div>
-          <div className="text-center p-6">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
-              <HandMetal className="w-8 h-8" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Digital Bridge</h3>
-            <p className="text-sm text-slate-600">
-              QR & NFC integration for instant digital conversion and tracking.
-            </p>
-          </div>
-           <div className="text-center p-6">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
-              <Megaphone className="w-8 h-8" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Data Analytics</h3>
-            <p className="text-sm text-slate-600">
-              Comprehensive campaign reports and engagement metrics.
-            </p>
-          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-none shadow-lg bg-slate-50">
+              <CardHeader>
+                <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-4">
+                  <Eye className="w-6 h-6" />
+                </div>
+                <CardTitle>AR Portals (WebAR)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  No app download needed. Users point their phone at the cup to reveal 3D product models, video messages, or gamified experiences directly on the physical item.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-lg bg-slate-50">
+              <CardHeader>
+                <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4">
+                  <Coffee className="w-6 h-6" />
+                </div>
+                <CardTitle>Thermochromic "Reveal" Inks</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  Ads that appear only when heat is applied. Your message reveals itself as the coffee warms the cup, creating a "moment of delight" and guaranteed attention.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-lg bg-slate-50">
+              <CardHeader>
+                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6" />
+                </div>
+                <CardTitle>GS1 Digital Links</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  Contextual redirection from a single code. A breakfast offer in the morning automatically switches to a dinner promo in the evening.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-lg bg-slate-50">
+              <CardHeader>
+                <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4">
+                  <HandMetal className="w-6 h-6" />
+                </div>
+                <CardTitle>Gamified "Scratch & Win"</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  Digital overlays allow users to "scratch" the screen to reveal prizes, deeply integrated with your CRM for instant lead generation.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-lg bg-slate-50">
+              <CardHeader>
+                <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-4">
+                  <Globe className="w-6 h-6" />
+                </div>
+                <CardTitle>Blockchain Sustainability</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  Supply chain transparency that proves the "Nature-Free" origins of every item and tracks it to local UK council recycling facilities.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

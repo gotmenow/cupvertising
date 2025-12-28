@@ -31,12 +31,12 @@ export default function Home() {
               <Sparkles className="w-4 h-4" /> Revolutionizing Consumables
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              The Ad-Cup Model: <br/>
-              <span className="text-amber-500">Free Supplies. Targeted Reach.</span>
+              Beyond Static Ads: <br/>
+              <span className="text-amber-500">Smart Assets & Printed Logic.</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-              We convert essential daily consumables—cups, containers, napkins, and more—into powerful advertising platforms. 
-              Restaurants get free inventory. Brands get hyper-local visibility.
+              We transform essential consumables into "Smart Assets" using WebAR, Thermochromic Inks, and Blockchain tracking. 
+              Restaurants and the NHS get free, sustainable inventory. Brands get digital-level engagement on physical items.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -103,11 +103,11 @@ export default function Home() {
             <Card className="border-slate-100 shadow-md hover:shadow-xl transition-all">
               <CardContent className="p-6 text-center">
                 <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Ticket className="w-7 h-7" />
+                  <Sparkles className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Events & Community</h3>
+                <h3 className="text-lg font-bold mb-2">Smart Tech Layers</h3>
                 <p className="text-slate-600 text-sm">
-                  Festival cups, wristbands, litter bags, and pharmacy bags for public spaces.
+                  AR Portals, Heat-Reveal Inks, and GS1 Digital Links for dynamic engagement.
                 </p>
               </CardContent>
             </Card>

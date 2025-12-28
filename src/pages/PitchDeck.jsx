@@ -105,15 +105,15 @@ export default function PitchDeck() {
             </CardHeader>
             <CardContent className="space-y-6 relative z-10">
               <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
-                <h4 className="font-bold text-slate-900 mb-2">Zero-Cost Inventory</h4>
+                <h4 className="font-bold text-slate-900 mb-2">Zero-Cost Smart Assets</h4>
                 <p className="text-slate-600">
-                  We provide 100% of these essential products for <span className="font-bold text-teal-600">FREE</span>.
+                  We provide free, tech-enabled inventory to SMEs, <span className="font-bold text-teal-600">NHS Hospitals</span>, and <span className="font-bold text-teal-600">Councils</span>—saving taxpayer money.
                 </p>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
-                <h4 className="font-bold text-slate-900 mb-2">Direct Profit Impact</h4>
+                <h4 className="font-bold text-slate-900 mb-2">Scalable Franchise Model</h4>
                 <p className="text-slate-600">
-                  We instantly convert a variable expense into a guaranteed saving for our partners.
+                  Franchisees manage physical distribution while we provide the AR technology and ad-sales platform.
                 </p>
               </div>
             </CardContent>
@@ -163,20 +163,31 @@ export default function PitchDeck() {
              </div>
              </div>
 
-             {/* Tech Differentiation */}
-             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                  <h4 className="font-bold text-slate-900 mb-2">Smart Packaging</h4>
-                  <p className="text-sm text-slate-600">QR codes & NFC for digital engagement, promos, and lead gen.</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                  <h4 className="font-bold text-slate-900 mb-2">Data Analytics</h4>
-                  <p className="text-sm text-slate-600">Real-time campaign performance metrics for advertisers.</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                  <h4 className="font-bold text-slate-900 mb-2">Subscription Model</h4>
-                  <p className="text-sm text-slate-600">Automated recurring supply drops for partner consistency.</p>
-              </div>
+             {/* Tech Differentiation - "Printed Logic" */}
+             <div className="mb-8">
+               <h3 className="text-lg font-bold text-slate-900 mb-4">Innovator Tech Stack: "Printed-Logic"</h3>
+               <div className="grid md:grid-cols-5 gap-4">
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div className="text-indigo-600 font-bold text-xs uppercase mb-1">WebAR</div>
+                    <div className="font-bold text-slate-800 text-sm">AR Portals</div>
+                </div>
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div className="text-orange-600 font-bold text-xs uppercase mb-1">Ink Tech</div>
+                    <div className="font-bold text-slate-800 text-sm">Heat Reveal</div>
+                </div>
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div className="text-blue-600 font-bold text-xs uppercase mb-1">Dynamic</div>
+                    <div className="font-bold text-slate-800 text-sm">GS1 Digital Links</div>
+                </div>
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div className="text-purple-600 font-bold text-xs uppercase mb-1">Gamification</div>
+                    <div className="font-bold text-slate-800 text-sm">Scratch & Win</div>
+                </div>
+                <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div className="text-green-600 font-bold text-xs uppercase mb-1">Trust</div>
+                    <div className="font-bold text-slate-800 text-sm">Blockchain Track</div>
+                </div>
+               </div>
              </div>
              </motion.section>
 
