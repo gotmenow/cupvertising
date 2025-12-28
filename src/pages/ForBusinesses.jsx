@@ -61,9 +61,9 @@ export default function ForBusinesses() {
             <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
               We provide restaurants, cafes, and event organizers with high-quality, essential supplies completely free of charge.
             </p>
-            <Link to={createPageUrl('Contact') + "?tab=partner"}>
+            <Link to={createPageUrl('BusinessOnboarding')}>
               <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 h-12 rounded-full">
-                Apply for Free Inventory
+                Calculate Your Savings
               </Button>
             </Link>
           </motion.div>
@@ -141,9 +141,9 @@ export default function ForBusinesses() {
       <section className="py-20 bg-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Ready to stop paying for supplies?</h2>
-          <Link to={createPageUrl('Contact') + "?tab=partner"}>
+          <Link to={createPageUrl('BusinessOnboarding')}>
             <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8">
-              Join as a Distribution Partner <ArrowRight className="ml-2 w-4 h-4" />
+              Start Saving Today <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
         </div>

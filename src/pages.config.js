@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import HowItWorks from './pages/HowItWorks';
 import PitchDeck from './pages/PitchDeck';
 import Franchise from './pages/Franchise';
+import BusinessOnboarding from './pages/BusinessOnboarding';
+import AdvertiserOnboarding from './pages/AdvertiserOnboarding';
 import __Layout from './Layout.jsx';
 
 
@@ -18,6 +20,8 @@ export const PAGES = {
     "HowItWorks": HowItWorks,
     "PitchDeck": PitchDeck,
     "Franchise": Franchise,
+    "BusinessOnboarding": BusinessOnboarding,
+    "AdvertiserOnboarding": AdvertiserOnboarding,
 }
 
 export const pagesConfig = {

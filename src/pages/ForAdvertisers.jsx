@@ -66,9 +66,9 @@ export default function ForAdvertisers() {
             <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
               Engage your target audience through the items they use, hold, and carry every day.
             </p>
-            <Link to={createPageUrl('Contact') + "?tab=advertiser"}>
+            <Link to={createPageUrl('AdvertiserOnboarding')}>
               <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white text-lg px-8 h-12 rounded-full">
-                Start Your Campaign
+                Calculate Campaign Reach
               </Button>
             </Link>
           </motion.div>
@@ -157,9 +157,9 @@ export default function ForAdvertisers() {
       <section className="py-20 bg-teal-600 text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-6">Ready to reach your audience?</h2>
-          <Link to={createPageUrl('Contact') + "?tab=advertiser"}>
+          <Link to={createPageUrl('AdvertiserOnboarding')}>
             <Button size="lg" className="bg-white text-teal-700 hover:bg-teal-50 px-8 h-12 text-lg">
-              Get A Quote <ArrowRight className="ml-2 w-4 h-4" />
+              Build Your Plan <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
         </div>
