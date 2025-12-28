@@ -4,28 +4,46 @@ import { createPageUrl } from '../utils';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Eye, Target, HandMetal, Coffee, Pizza, Megaphone, ArrowRight } from 'lucide-react';
+import { Eye, Target, HandMetal, Coffee, Pizza, Megaphone, ArrowRight, Briefcase, GraduationCap, Globe, Truck } from 'lucide-react';
 import { motion } from "framer-motion";
 
 export default function ForAdvertisers() {
   const mediums = [
     {
-      title: "Beverage Experience",
+      title: "High-Frequency Consumer",
       icon: Coffee,
-      items: ["Paper Cups", "Sleeves", "Napkins"],
-      desc: "Put your brand in their hands during their daily coffee ritual."
+      items: ["Cups", "Takeout Boxes", "Napkins", "Receipts"],
+      desc: "Daily visibility in cafes, restaurants, and food delivery. High repetition impressions."
     },
     {
-      title: "Takeout & Delivery",
-      icon: Pizza,
-      items: ["Containers", "Bags", "Stickers"],
-      desc: "Reach customers at home or in the office with every delivery."
+      title: "Corporate & Professional",
+      icon: Briefcase,
+      items: ["Printer Paper", "Notepads", "Pens", "Visitor Badges"],
+      desc: "Target offices and retail spaces. Ideal for B2B services and tech solutions."
     },
     {
-      title: "Event Engagement",
+      title: "Youth & Education",
+      icon: GraduationCap,
+      items: ["Notebooks", "Exam Sheets", "Lanyards"],
+      desc: "Direct access to students in schools, colleges, and training centres."
+    },
+    {
+      title: "Community & Public",
+      icon: Globe,
+      items: ["Pharmacy Bags", "Ticket Stubs", "Dog Waste Bags"],
+      desc: "Reach local communities through councils, healthcare, and public spaces."
+    },
+    {
+      title: "Events & Festivals",
       icon: HandMetal,
-      items: ["Wristbands", "Water Labels"],
-      desc: "Be part of the excitement at festivals, concerts, and venues."
+      items: ["Wristbands", "Event Cups", "Program Booklets"],
+      desc: "Capture attention during high-engagement moments at festivals and concerts."
+    },
+    {
+      title: "Logistics & Hygiene",
+      icon: Truck,
+      items: ["Delivery Inserts", "Bin Liners", "Hygiene Wipes"],
+      desc: "Subtle but impactful placement in operational and private spaces."
     }
   ];
 

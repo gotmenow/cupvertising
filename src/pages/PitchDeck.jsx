@@ -129,10 +129,10 @@ export default function PitchDeck() {
           
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { title: "Core & Eco-Ops", img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop", desc: "Cups, Straws, Bin Liners" },
-              { title: "Food Packaging", img: "https://images.unsplash.com/photo-1595246140625-573b715d11dc?q=80&w=800&auto=format&fit=crop", desc: "Bio-Boxes, Bags, Cutlery" },
-              { title: "Smart Media", img: "https://images.unsplash.com/photo-1575480579998-1e43c5b96915?q=80&w=800&auto=format&fit=crop", desc: "QR/NFC Integrated Items" },
-              { title: "Reusables", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", desc: "Branded Bottles & Totes" }
+              { title: "Food & Hospitality", img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop", desc: "Cups, Boxes, Bags, Cutlery" },
+              { title: "Corporate & School", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop", desc: "Paper, Notepads, Lanyards" },
+              { title: "Events & Public", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", desc: "Wristbands, Pharmacy Bags" },
+              { title: "Ops & Hygiene", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop", desc: "Bin Liners, Receipts, Wipes" }
             ].map((item, i) => (
               <div key={i} className="group relative h-64 rounded-2xl overflow-hidden shadow-lg">
                 <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />

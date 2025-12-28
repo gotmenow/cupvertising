@@ -41,19 +41,20 @@ export default function Contact() {
   });
 
   const productOptions = [
-    "Beverage (Cups, Straws, Napkins)",
-    "Food Packaging (Boxes, Bags, Cutlery)",
-    "Eco-Ops (Bin Liners, Cleaning Supplies)",
-    "Reusables (Bottles, Totes)",
-    "Event Utility (Wristbands, Labels)"
+    "Food & Hospitality (Cups, Boxes, Cutlery)",
+    "Cleaning & Hygiene (Bin Liners, Wipes)",
+    "Office & Retail (Paper, Notepads, Receipts)",
+    "Schools & Education (Notebooks, Lanyards)",
+    "Events & Festivals (Wristbands, Cups)",
+    "Healthcare & Community (Pharmacy Bags)"
   ];
 
   const mediumOptions = [
-    "Beverage Cups & Straws",
-    "Smart Packaging (QR Integrated)",
-    "Takeout Bags & Containers",
-    "Branded Reusables",
-    "Event Wristbands"
+    "Consumer & Takeaway (High Frequency)",
+    "Corporate & B2B (Offices, Retail)",
+    "Youth & Education (Schools, Colleges)",
+    "Community & Public (Healthcare, Councils)",
+    "Events & Festivals (High Engagement)"
   ];
 
   const handlePartnerSubmit = async (e) => {

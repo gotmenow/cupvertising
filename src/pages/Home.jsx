@@ -67,11 +67,11 @@ export default function Home() {
             <Card className="border-slate-100 shadow-md hover:shadow-xl transition-all">
               <CardContent className="p-6 text-center">
                 <div className="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Coffee className="w-7 h-7" />
+                  <UtensilsCrossed className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Beverage & Straws</h3>
+                <h3 className="text-lg font-bold mb-2">Food & Hospitality</h3>
                 <p className="text-slate-600 text-sm">
-                  Cups, sleeves, napkins, and paper straws. The daily sustainable essentials.
+                  Cups, boxes, bags, cutlery, and napkins. The daily high-volume essentials.
                 </p>
               </CardContent>
             </Card>
@@ -81,9 +81,9 @@ export default function Home() {
                 <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Package className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Food Packaging</h3>
+                <h3 className="text-lg font-bold mb-2">Corporate & Education</h3>
                 <p className="text-slate-600 text-sm">
-                  Bio-containers, takeaway bags, and compostable cutlery for meals on the go.
+                  Printer paper, notepads, exam sheets, and stationery for offices and schools.
                 </p>
               </CardContent>
             </Card>
@@ -91,11 +91,11 @@ export default function Home() {
             <Card className="border-slate-100 shadow-md hover:shadow-xl transition-all">
               <CardContent className="p-6 text-center">
                 <div className="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <UtensilsCrossed className="w-7 h-7" />
+                  <Leaf className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Eco-Operations</h3>
+                <h3 className="text-lg font-bold mb-2">Hygiene & Operations</h3>
                 <p className="text-slate-600 text-sm">
-                  Biodegradable bin liners, eco-cleaning supplies, and compostable wipes.
+                  Bin liners, paper towels, wipes, and receipt rolls. The hidden recurring costs.
                 </p>
               </CardContent>
             </Card>
@@ -103,11 +103,11 @@ export default function Home() {
             <Card className="border-slate-100 shadow-md hover:shadow-xl transition-all">
               <CardContent className="p-6 text-center">
                 <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Sparkles className="w-7 h-7" />
+                  <Ticket className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Smart & Reusable</h3>
+                <h3 className="text-lg font-bold mb-2">Events & Community</h3>
                 <p className="text-slate-600 text-sm">
-                  QR-integrated packaging and branded reusable bottles/totes for long-term value.
+                  Festival cups, wristbands, litter bags, and pharmacy bags for public spaces.
                 </p>
               </CardContent>
             </Card>

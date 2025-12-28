@@ -9,20 +9,36 @@ import { motion } from "framer-motion";
 export default function ForBusinesses() {
   const products = [
     {
-      category: "Beverage Essentials",
-      items: ["Coffee Cups (4oz-16oz)", "Paper Straws", "Sleeves", "Napkins"]
+      category: "Food & Hospitality",
+      items: ["Cups (Hot/Cold), Sleeves & Straws", "Bio-Boxes (Burger/Curry/Pizza)", "Paper Bags & Greaseproof Paper", "Wooden Cutlery & Napkins", "Condiment Sachets & Stirrers"]
     },
     {
-      category: "Food Packaging",
-      items: ["Bio-Boxes & Clamshells", "Takeout Bags", "Compostable Cutlery", "Tamper-Proof Stickers"]
+      category: "Cleaning & Hygiene",
+      items: ["Biodegradable Bin Liners", "Washroom Paper Towels", "Eco Toilet Rolls", "Sanitising Wipes & Gloves", "Floor Caution Signs (Ad Space)"]
     },
     {
-      category: "Eco-Operations",
-      items: ["Biodegradable Bin Liners", "Eco-Cleaning Supplies", "Sanitizing Wipes", "Coasters"]
+      category: "Logistics & Operations",
+      items: ["Delivery Inserts & Thank You Cards", "Order Sealing Stickers", "Receipt Rolls (Ad-Backed)", "Queue Tokens & Number Slips"]
     },
     {
-      category: "Specialty & Reusables",
-      items: ["Branded Reusable Bottles", "Event Wristbands", "Tote Bags", "Water Labels"]
+      category: "Office & Retail",
+      items: ["Printer Paper (Watermarked)", "Notepads, Pens & Envelopes", "Packaging Tape", "Visitor Badges", "Business Cards"]
+    },
+    {
+      category: "Schools & Education",
+      items: ["Rough Notebooks & Exam Sheets", "ID Card Lanyards", "Event Certificates", "Flyers & Handouts"]
+    },
+    {
+      category: "Events & Festivals",
+      items: ["Event Cups & Glasses", "Wristbands & Entry Tickets", "Program Booklets & Maps", "Name Badges"]
+    },
+    {
+      category: "Healthcare & Public",
+      items: ["Prescription & Pharmacy Bags", "Hospital Cups & Tissues", "Waiting Room Leaflets", "Appointment Cards"]
+    },
+    {
+      category: "Council & Community",
+      items: ["Public Litter Bags", "Dog Waste Bags", "Community Newsletters", "Park/Event Cups"]
     }
   ];
 
