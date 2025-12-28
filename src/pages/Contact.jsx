@@ -10,13 +10,15 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/components/ui/use-toast";
-import { Loader2, Package, Megaphone, CheckCircle2 } from "lucide-react";
+import { Loader2, Package, Megaphone, CheckCircle2, Briefcase } from "lucide-react";
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
   
-  const defaultTab = searchParams.get('tab') === 'partner' ? 'partner' : 'advertiser';
+  const validTabs = ['partner', 'advertiser', 'franchise'];
+  const queryTab = searchParams.get('tab');
+  const defaultTab = validTabs.includes(queryTab) ? queryTab : 'advertiser';
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -31,6 +33,11 @@ export default function Contact() {
   const [advertiserForm, setAdvertiserForm] = useState({
     name: '', business_name: '', target_audience: '', campaign_budget: '', email: '', phone: '', message: '',
     interested_mediums: []
+  });
+
+  // Franchise Form State
+  const [franchiseForm, setFranchiseForm] = useState({
+    name: '', email: '', phone: '', city: '', investment_capital: '', experience: '', linkedin_profile: ''
   });
 
   const productOptions = [
@@ -71,6 +78,21 @@ export default function Contact() {
       await base44.entities.AdvertiserEnquiry.create(advertiserForm);
       setSubmitted(true);
       toast({ title: "Enquiry Sent!", description: "Our team will contact you to discuss your campaign." });
+    } catch (error) {
+      console.error(error);
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleFranchiseSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await base44.entities.FranchiseEnquiry.create(franchiseForm);
+      setSubmitted(true);
+      toast({ title: "Application Received!", description: "Our franchise development team will review your profile shortly." });
     } catch (error) {
       console.error(error);
       toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
@@ -122,12 +144,15 @@ export default function Contact() {
 
         <Card className="shadow-xl border-none bg-white">
           <Tabs defaultValue={defaultTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 h-16 p-1 bg-slate-100 rounded-t-xl">
-              <TabsTrigger value="partner" className="h-full text-base font-medium data-[state=active]:bg-amber-600 data-[state=active]:text-white transition-all">
-                <Package className="w-5 h-5 mr-2" /> I Want Free Supplies (Partner)
+            <TabsList className="grid w-full grid-cols-3 h-16 p-1 bg-slate-100 rounded-t-xl">
+              <TabsTrigger value="partner" className="h-full text-sm md:text-base font-medium data-[state=active]:bg-amber-600 data-[state=active]:text-white transition-all">
+                <Package className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Free Supplies
               </TabsTrigger>
-              <TabsTrigger value="advertiser" className="h-full text-base font-medium data-[state=active]:bg-teal-600 data-[state=active]:text-white transition-all">
-                <Megaphone className="w-5 h-5 mr-2" /> I Want to Advertise (Client)
+              <TabsTrigger value="advertiser" className="h-full text-sm md:text-base font-medium data-[state=active]:bg-teal-600 data-[state=active]:text-white transition-all">
+                <Megaphone className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Advertise
+              </TabsTrigger>
+              <TabsTrigger value="franchise" className="h-full text-sm md:text-base font-medium data-[state=active]:bg-slate-900 data-[state=active]:text-white transition-all">
+                <Briefcase className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Franchising
               </TabsTrigger>
             </TabsList>
 
@@ -288,6 +313,59 @@ export default function Contact() {
 
                 <Button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-lg h-12" disabled={isSubmitting}>
                   {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Request Quote'}
+                </Button>
+              </form>
+            </TabsContent>
+
+            {/* Franchise Form */}
+            <TabsContent value="franchise" className="p-6 md:p-8">
+                <div className="mb-6">
+                <h2 className="text-2xl font-bold text-slate-900">Franchise Application</h2>
+                <p className="text-slate-500">Apply to own a Cupvertising territory in your city.</p>
+              </div>
+              <form onSubmit={handleFranchiseSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="f_name">Full Name</Label>
+                    <Input id="f_name" required value={franchiseForm.name} onChange={e => setFranchiseForm({...franchiseForm, name: e.target.value})} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="f_email">Email Address</Label>
+                    <Input id="f_email" type="email" required value={franchiseForm.email} onChange={e => setFranchiseForm({...franchiseForm, email: e.target.value})} />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                    <Label htmlFor="f_city">Territory / City of Interest</Label>
+                    <Input id="f_city" placeholder="e.g. Manchester, Leeds..." required value={franchiseForm.city} onChange={e => setFranchiseForm({...franchiseForm, city: e.target.value})} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Available Investment Capital</Label>
+                      <Select value={franchiseForm.investment_capital} onValueChange={v => setFranchiseForm({...franchiseForm, investment_capital: v})}>
+                      <SelectTrigger><SelectValue placeholder="Select capital range" /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Under £10k">Under £10k</SelectItem>
+                        <SelectItem value="£10k - £25k">£10k - £25k</SelectItem>
+                        <SelectItem value="£25k - £50k">£25k - £50k</SelectItem>
+                        <SelectItem value="£50k+">£50k+</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="f_linkedin">LinkedIn Profile (Optional)</Label>
+                  <Input id="f_linkedin" placeholder="https://linkedin.com/in/..." value={franchiseForm.linkedin_profile} onChange={e => setFranchiseForm({...franchiseForm, linkedin_profile: e.target.value})} />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="f_exp">Relevant Experience</Label>
+                  <Textarea id="f_exp" placeholder="Briefly describe your business or sales experience..." value={franchiseForm.experience} onChange={e => setFranchiseForm({...franchiseForm, experience: e.target.value})} />
+                </div>
+
+                <Button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 text-lg h-12" disabled={isSubmitting}>
+                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Submit Application'}
                 </Button>
               </form>
             </TabsContent>

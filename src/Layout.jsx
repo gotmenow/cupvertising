@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, Coffee, Megaphone, Info, Mail, Home, Presentation, Users } from 'lucide-react';
+import { Menu, X, Coffee, Megaphone, Info, Mail, Home, Presentation, Users, Briefcase } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 export default function Layout({ children }) {
@@ -14,6 +14,7 @@ export default function Layout({ children }) {
         { name: 'Home', path: '/', icon: Home },
         { name: 'For Businesses', path: '/ForBusinesses', icon: Coffee },
         { name: 'For Advertisers', path: '/ForAdvertisers', icon: Megaphone },
+        { name: 'Franchise', path: '/Franchise', icon: Briefcase },
         { name: 'Pitch Deck', path: '/PitchDeck', icon: Presentation },
         { name: 'About Us', path: '/About', icon: Users },
         { name: 'Contact', path: '/Contact', icon: Mail },
