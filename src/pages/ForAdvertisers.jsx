@@ -65,34 +65,43 @@ export default function ForAdvertisers() {
             <p className="text-slate-600">In a digital world, physical presence creates a lasting impression.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
-                <Target className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Hyper-Targeting</h3>
-              <p className="text-slate-600">
-                Choose venues that match your demographic. Tech offices, student cafes, family restaurants, or music festivals.
-              </p>
+          <div className="grid md:grid-cols-4 gap-8">
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
+              <Target className="w-8 h-8" />
             </div>
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
-                <Eye className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">High Dwell Time</h3>
-              <p className="text-slate-600">
-                A coffee cup is held for 20 minutes. A takeout box sits on the table for dinner. Uninterrupted brand exposure.
-              </p>
+            <h3 className="text-xl font-bold mb-3">Hyper-Targeting</h3>
+            <p className="text-sm text-slate-600">
+              Match venues to demographics. Tech hubs, universities, or festivals.
+            </p>
+          </div>
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
+              <Eye className="w-8 h-8" />
             </div>
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
-                <HandMetal className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Tactile Connection</h3>
-              <p className="text-slate-600">
-                Physical interaction builds stronger memory structures than fleeting digital impressions.
-              </p>
+            <h3 className="text-xl font-bold mb-3">High Dwell Time</h3>
+            <p className="text-sm text-slate-600">
+              20+ mins of exposure per item. Uninterrupted engagement.
+            </p>
+          </div>
+          <div className="text-center p-6">
+            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
+              <HandMetal className="w-8 h-8" />
             </div>
+            <h3 className="text-xl font-bold mb-3">Digital Bridge</h3>
+            <p className="text-sm text-slate-600">
+              QR & NFC integration for instant digital conversion and tracking.
+            </p>
+          </div>
+           <div className="text-center p-6">
+            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-700">
+              <Megaphone className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold mb-3">Data Analytics</h3>
+            <p className="text-sm text-slate-600">
+              Comprehensive campaign reports and engagement metrics.
+            </p>
+          </div>
           </div>
         </div>
       </section>

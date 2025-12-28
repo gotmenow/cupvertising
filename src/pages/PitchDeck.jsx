@@ -129,10 +129,10 @@ export default function PitchDeck() {
           
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { title: "Core Beverage", img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop", desc: "Cups, Sleeves, Napkins" },
-              { title: "Packaging", img: "https://images.unsplash.com/photo-1595246140625-573b715d11dc?q=80&w=800&auto=format&fit=crop", desc: "Boxes, Bags, Stickers" },
-              { title: "Condiments", img: "https://images.unsplash.com/photo-1575480579998-1e43c5b96915?q=80&w=800&auto=format&fit=crop", desc: "Sachets, Wipes, Coasters" },
-              { title: "Event Utility", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", desc: "Wristbands, Labels" }
+              { title: "Core & Eco-Ops", img: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=800&auto=format&fit=crop", desc: "Cups, Straws, Bin Liners" },
+              { title: "Food Packaging", img: "https://images.unsplash.com/photo-1595246140625-573b715d11dc?q=80&w=800&auto=format&fit=crop", desc: "Bio-Boxes, Bags, Cutlery" },
+              { title: "Smart Media", img: "https://images.unsplash.com/photo-1575480579998-1e43c5b96915?q=80&w=800&auto=format&fit=crop", desc: "QR/NFC Integrated Items" },
+              { title: "Reusables", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop", desc: "Branded Bottles & Totes" }
             ].map((item, i) => (
               <div key={i} className="group relative h-64 rounded-2xl overflow-hidden shadow-lg">
                 <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
@@ -154,11 +154,27 @@ export default function PitchDeck() {
              </div>
              <div className="flex items-center gap-4 text-sm font-medium text-slate-500">
                 <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full">Recyclable</span>
-                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full">Compostable</span>
-                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full">High-Quality</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full">Tech-Enabled</span>
+                <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Subscription Ready</span>
              </div>
-          </div>
-        </motion.section>
+             </div>
+
+             {/* Tech Differentiation */}
+             <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                  <h4 className="font-bold text-slate-900 mb-2">Smart Packaging</h4>
+                  <p className="text-sm text-slate-600">QR codes & NFC for digital engagement, promos, and lead gen.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                  <h4 className="font-bold text-slate-900 mb-2">Data Analytics</h4>
+                  <p className="text-sm text-slate-600">Real-time campaign performance metrics for advertisers.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                  <h4 className="font-bold text-slate-900 mb-2">Subscription Model</h4>
+                  <p className="text-sm text-slate-600">Automated recurring supply drops for partner consistency.</p>
+              </div>
+             </div>
+             </motion.section>
 
         {/* Slide 4: Go-To-Market Strategy (Revised) */}
         <motion.section {...fadeInUp} className="bg-slate-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
@@ -198,9 +214,9 @@ export default function PitchDeck() {
                 <div className="w-24 h-24 bg-slate-800 border-2 border-slate-600 rounded-full flex items-center justify-center text-slate-400 font-bold text-xl mb-6 z-10 mx-auto md:mx-0">
                   18m+
                 </div>
-                <h3 className="text-xl font-bold mb-2">Phase 3: National Scale</h3>
+                <h3 className="text-xl font-bold mb-2">Phase 3: Franchise Scale</h3>
                 <p className="text-sm text-slate-400">
-                  National partnerships with chain distributors. Programmatic ad-buying platform launch for advertisers.
+                  Launch franchise model. Standardized SOPs, branding, and tech stack to scale rapidly across new territories.
                 </p>
               </div>
             </div>

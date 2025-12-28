@@ -34,17 +34,19 @@ export default function Contact() {
   });
 
   const productOptions = [
-    "Core Beverage (Cups, Sleeves, Napkins)",
-    "Packaging (Containers, Bags)",
-    "Condiments (Sugar, Wipes)",
-    "Event & Utility (Wristbands, Labels)"
+    "Beverage (Cups, Straws, Napkins)",
+    "Food Packaging (Boxes, Bags, Cutlery)",
+    "Eco-Ops (Bin Liners, Cleaning Supplies)",
+    "Reusables (Bottles, Totes)",
+    "Event Utility (Wristbands, Labels)"
   ];
 
   const mediumOptions = [
-    "Beverage Cups & Napkins",
-    "Takeout Containers & Bags",
-    "Condiments & Sachets",
-    "Event Wristbands & Labels"
+    "Beverage Cups & Straws",
+    "Smart Packaging (QR Integrated)",
+    "Takeout Bags & Containers",
+    "Branded Reusables",
+    "Event Wristbands"
   ];
 
   const handlePartnerSubmit = async (e) => {

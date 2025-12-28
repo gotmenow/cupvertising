@@ -42,7 +42,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to={createPageUrl('ForBusinesses')}>
                 <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white min-w-[240px] h-14 text-lg font-semibold rounded-xl shadow-lg shadow-amber-900/20">
-                  Get Free Supplies
+                  Join Network (Free)
                 </Button>
               </Link>
               <Link to={createPageUrl('ForAdvertisers')}>
@@ -69,9 +69,9 @@ export default function Home() {
                 <div className="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Coffee className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Core Beverage</h3>
+                <h3 className="text-lg font-bold mb-2">Beverage & Straws</h3>
                 <p className="text-slate-600 text-sm">
-                  Paper coffee cups, cup sleeves, and napkins. The daily essentials for every cafe.
+                  Cups, sleeves, napkins, and paper straws. The daily sustainable essentials.
                 </p>
               </CardContent>
             </Card>
@@ -81,9 +81,9 @@ export default function Home() {
                 <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Package className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Packaging & Delivery</h3>
+                <h3 className="text-lg font-bold mb-2">Food Packaging</h3>
                 <p className="text-slate-600 text-sm">
-                  Takeout containers, paper bags, cutlery wrappers, and tamper-proof stickers.
+                  Bio-containers, takeaway bags, and compostable cutlery for meals on the go.
                 </p>
               </CardContent>
             </Card>
@@ -93,9 +93,9 @@ export default function Home() {
                 <div className="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <UtensilsCrossed className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Condiments</h3>
+                <h3 className="text-lg font-bold mb-2">Eco-Operations</h3>
                 <p className="text-slate-600 text-sm">
-                  Sugar packets, condiment sachets, wet wipes, and cardboard coasters.
+                  Biodegradable bin liners, eco-cleaning supplies, and compostable wipes.
                 </p>
               </CardContent>
             </Card>
@@ -103,11 +103,11 @@ export default function Home() {
             <Card className="border-slate-100 shadow-md hover:shadow-xl transition-all">
               <CardContent className="p-6 text-center">
                 <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Ticket className="w-7 h-7" />
+                  <Sparkles className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Event & Utility</h3>
+                <h3 className="text-lg font-bold mb-2">Smart & Reusable</h3>
                 <p className="text-slate-600 text-sm">
-                  Tyvek wristbands and branded water bottle labels for events and venues.
+                  QR-integrated packaging and branded reusable bottles/totes for long-term value.
                 </p>
               </CardContent>
             </Card>
