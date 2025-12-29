@@ -179,12 +179,20 @@ export default function BusinessOnboarding() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-4 pb-8 z-20">
         <div className="max-w-2xl mx-auto">
           {step === 'type' && (
-            <div className="flex flex-wrap gap-2 justify-end">
-              {['Cafe / Coffee Shop', 'Restaurant / Takeaway', 'Office / Corporate', 'Event Organiser', 'School / Education'].map(type => (
-                <OptionButton key={type} onClick={() => handleTypeSelect(type)}>
-                  {type}
-                </OptionButton>
-              ))}
+            <div className="space-y-4">
+                <div className="flex flex-wrap gap-2 justify-end">
+                  {['Cafe / Coffee Shop', 'Restaurant / Takeaway', 'Office / Corporate', 'Event Organiser', 'School / Education'].map(type => (
+                    <OptionButton key={type} onClick={() => handleTypeSelect(type)}>
+                      {type}
+                    </OptionButton>
+                  ))}
+                </div>
+                <div className="flex justify-end">
+                    <div className="w-full max-w-sm">
+                        <div className="text-xs text-right text-slate-400 mb-2 uppercase tracking-wide">Or enter manually</div>
+                        <ChatInput onSend={handleTypeSelect} placeholder="Other Business Type..." />
+                    </div>
+                </div>
             </div>
           )}
 
