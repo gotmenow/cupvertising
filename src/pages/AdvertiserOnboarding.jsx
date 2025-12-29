@@ -4,7 +4,7 @@ import { createPageUrl } from '../utils';
 import { base44 } from "@/api/base44Client";
 import { ChatMessage, OptionButton, ChatInput } from '@/components/onboarding/ChatComponents';
 import { Button } from "@/components/ui/button";
-import { Loader2, Target, Megaphone, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Loader2, Target, Megaphone, ArrowLeft, ArrowRight, Plus, X } from 'lucide-react';
 
 export default function AdvertiserOnboarding() {
   const navigate = useNavigate();
@@ -15,6 +15,9 @@ export default function AdvertiserOnboarding() {
   const [loading, setLoading] = useState(false);
   const [tempAudiences, setTempAudiences] = useState([]);
   const [tempLocations, setTempLocations] = useState([]);
+  const [manualLocation, setManualLocation] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [radius, setRadius] = useState("5");
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -47,6 +50,26 @@ export default function AdvertiserOnboarding() {
         ? prev.filter(l => l !== loc)
         : [...prev, loc]
     );
+  };
+
+  const addManualLocation = () => {
+    if (manualLocation.trim()) {
+      const loc = manualLocation.trim();
+      if (!tempLocations.includes(loc)) {
+        setTempLocations(prev => [...prev, loc]);
+      }
+      setManualLocation("");
+    }
+  };
+
+  const addPostcodeLocation = () => {
+    if (postcode.trim()) {
+      const loc = `${postcode.trim().toUpperCase()} (+${radius} miles)`;
+      if (!tempLocations.includes(loc)) {
+        setTempLocations(prev => [...prev, loc]);
+      }
+      setPostcode("");
+    }
   };
 
   const confirmLocation = () => {
@@ -205,7 +228,7 @@ export default function AdvertiserOnboarding() {
 
           {step === 'location' && (
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-2 justify-end max-h-[60vh] overflow-y-auto p-1">
+              <div className="flex flex-wrap gap-2 justify-end max-h-[40vh] overflow-y-auto p-1">
                 {[
                   "London", "Manchester", "Birmingham", "Leeds", "Liverpool", 
                   "Glasgow", "Edinburgh", "Bristol", "Cardiff", "Newcastle",
@@ -219,7 +242,67 @@ export default function AdvertiserOnboarding() {
                     {loc}
                   </OptionButton>
                 ))}
+                {tempLocations.filter(l => ![
+                  "London", "Manchester", "Birmingham", "Leeds", "Liverpool", 
+                  "Glasgow", "Edinburgh", "Bristol", "Cardiff", "Newcastle",
+                  "Nottingham", "Sheffield", "Southampton", "Nationwide"
+                ].includes(l)).map(loc => (
+                  <OptionButton 
+                    key={loc} 
+                    onClick={() => toggleLocation(loc)}
+                    selected={true}
+                  >
+                    {loc} <X className="ml-2 w-3 h-3 inline" />
+                  </OptionButton>
+                ))}
               </div>
+
+              {/* Manual & Postcode Entry */}
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-4 ml-auto max-w-[90%] md:max-w-[80%]">
+                 <div className="space-y-2">
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Add Custom Location</div>
+                    <div className="flex gap-2">
+                        <Input 
+                            placeholder="City, Region, or Area..." 
+                            value={manualLocation}
+                            onChange={(e) => setManualLocation(e.target.value)}
+                            className="bg-white"
+                            onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addManualLocation())}
+                        />
+                        <Button onClick={addManualLocation} size="icon" variant="outline" className="shrink-0 bg-white hover:bg-slate-100">
+                            <Plus className="w-4 h-4" />
+                        </Button>
+                    </div>
+                 </div>
+                 
+                 <div className="space-y-2">
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Add by Postcode</div>
+                    <div className="flex gap-2 items-center">
+                        <Input 
+                            placeholder="Postcode (e.g. M1)" 
+                            value={postcode}
+                            onChange={(e) => setPostcode(e.target.value)}
+                            className="bg-white"
+                            onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addPostcodeLocation())}
+                        />
+                        <select 
+                            className="h-10 rounded-md border border-input bg-white px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            value={radius}
+                            onChange={(e) => setRadius(e.target.value)}
+                        >
+                            <option value="1">1 mi</option>
+                            <option value="3">3 mi</option>
+                            <option value="5">5 mi</option>
+                            <option value="10">10 mi</option>
+                            <option value="20">20 mi</option>
+                        </select>
+                        <Button onClick={addPostcodeLocation} size="icon" variant="outline" className="shrink-0 bg-white hover:bg-slate-100">
+                            <Plus className="w-4 h-4" />
+                        </Button>
+                    </div>
+                 </div>
+              </div>
+
               <div className="flex justify-end">
                 <Button 
                   onClick={confirmLocation}
