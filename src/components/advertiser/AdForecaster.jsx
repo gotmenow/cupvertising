@@ -8,7 +8,11 @@ import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Check, Target, ArrowRight, Loader2, BarChart3, Users, Clock, Megaphone } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { Check, Target, ArrowRight, Loader2, BarChart3, Users, Clock, Megaphone, ChevronsUpDown, X } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -18,9 +22,39 @@ export default function AdForecaster() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Forecast State
-  const [targetAudience, setTargetAudience] = useState("");
+  const [targetAudiences, setTargetAudiences] = useState([]);
   const [location, setLocation] = useState("");
   const [budget, setBudget] = useState(1000);
+  const [openAudience, setOpenAudience] = useState(false);
+
+  const audienceOptions = [
+    {
+      label: "Demographics",
+      items: ["Gen Z (18-24)", "Millennials (25-40)", "Gen X (41-56)", "Boomers (57+)"]
+    },
+    {
+      label: "Occupations",
+      items: ["Students", "Office Professionals", "Tradespeople", "Parents / Caregivers", "Retirees"]
+    },
+    {
+      label: "Interests & Lifestyle",
+      items: ["Foodies & Dining", "Tech Enthusiasts", "Health & Fitness", "Sports Fans", "Nightlife", "Eco-Conscious"]
+    },
+    {
+      label: "Behavior",
+      items: ["Daily Commuters", "Shoppers", "Tourists", "Event Goers"]
+    }
+  ];
+
+  const toggleAudience = (item) => {
+    setTargetAudiences(prev => 
+      prev.includes(item) ? prev.filter(i => i !== item) : [...prev, item]
+    );
+  };
+
+  const removeAudience = (item) => {
+    setTargetAudiences(prev => prev.filter(i => i !== item));
+  };
   const [autoOptimize, setAutoOptimize] = useState(true);
   const [selectedProducts, setSelectedProducts] = useState([]);
 
@@ -63,7 +97,7 @@ export default function AdForecaster() {
       const forecastSummary = `
         Ad Forecast Results:
         - Budget: £${budget}
-        - Target: ${targetAudience} in ${location}
+        - Target: ${targetAudiences.join(", ")} in ${location}
         - Estimated Reach: ${estimatedReach.toLocaleString()} impressions
         - Products: ${autoOptimize ? "Auto-Optimized" : selectedProducts.join(", ")}
       `;
@@ -73,7 +107,7 @@ export default function AdForecaster() {
         business_name: leadDetails.businessName,
         email: leadDetails.email,
         phone: leadDetails.phone,
-        target_audience: targetAudience,
+        target_audience: targetAudiences.join(", "),
         campaign_budget: `£${budget}`,
         interested_mediums: autoOptimize ? ["Optimized Mix"] : selectedProducts,
         message: forecastSummary
@@ -143,19 +177,69 @@ export default function AdForecaster() {
                 >
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>Target Audience / Industry</Label>
-                      <Select value={targetAudience} onValueChange={setTargetAudience}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select Audience" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Students">Students & Gen Z</SelectItem>
-                          <SelectItem value="Corporate">Corporate & Professionals</SelectItem>
-                          <SelectItem value="Families">Families & Locals</SelectItem>
-                          <SelectItem value="Commuters">Commuters</SelectItem>
-                          <SelectItem value="EventGoers">Event Goers</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label>Target Audience (Select multiple)</Label>
+                      <Popover open={openAudience} onOpenChange={setOpenAudience}>
+                        <PopoverTrigger asChild>
+                          <Button variant="outline" role="combobox" aria-expanded={openAudience} className="w-full justify-between h-auto min-h-[2.5rem] py-2">
+                            {targetAudiences.length > 0 ? (
+                              <div className="flex flex-wrap gap-1">
+                                {targetAudiences.slice(0, 3).map((item) => (
+                                  <Badge key={item} variant="secondary" className="mr-1 text-xs font-normal">
+                                    {item}
+                                  </Badge>
+                                ))}
+                                {targetAudiences.length > 3 && (
+                                  <span className="text-xs text-muted-foreground self-center">
+                                    +{targetAudiences.length - 3} more
+                                  </span>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="text-muted-foreground">Select demographics, interests...</span>
+                            )}
+                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[300px] p-0" align="start">
+                          <ScrollArea className="h-[300px] p-4">
+                            {audienceOptions.map((group, idx) => (
+                              <div key={idx} className="mb-4 last:mb-0">
+                                <h4 className="mb-2 text-sm font-semibold text-slate-900">{group.label}</h4>
+                                <div className="space-y-2">
+                                  {group.items.map((item) => (
+                                    <div key={item} className="flex items-center space-x-2">
+                                      <Checkbox 
+                                        id={`aud-${item}`} 
+                                        checked={targetAudiences.includes(item)}
+                                        onCheckedChange={() => toggleAudience(item)}
+                                      />
+                                      <label 
+                                        htmlFor={`aud-${item}`} 
+                                        className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer w-full py-1"
+                                      >
+                                        {item}
+                                      </label>
+                                    </div>
+                                  ))}
+                                </div>
+                                {idx < audienceOptions.length - 1 && <Separator className="mt-4" />}
+                              </div>
+                            ))}
+                          </ScrollArea>
+                        </PopoverContent>
+                      </Popover>
+                      
+                      {/* Selected tags display below if needed, or just keep them in the trigger as above */}
+                      {targetAudiences.length > 0 && (
+                         <div className="flex flex-wrap gap-2 mt-2">
+                            {targetAudiences.map(item => (
+                               <Badge key={item} variant="secondary" className="flex items-center gap-1 bg-teal-50 text-teal-700 border-teal-100">
+                                  {item}
+                                  <X className="w-3 h-3 cursor-pointer hover:text-teal-900" onClick={(e) => { e.stopPropagation(); removeAudience(item); }} />
+                               </Badge>
+                            ))}
+                         </div>
+                      )}
                     </div>
                     <div className="space-y-2">
                       <Label>Region / City</Label>
@@ -237,7 +321,7 @@ export default function AdForecaster() {
 
                   <Button 
                     onClick={() => setStep(2)} 
-                    disabled={!targetAudience || !location || (!autoOptimize && selectedProducts.length === 0)}
+                    disabled={targetAudiences.length === 0 || !location || (!autoOptimize && selectedProducts.length === 0)}
                     className="w-full bg-teal-600 hover:bg-teal-700 text-white mt-4 h-12 text-lg"
                   >
                     View Proposal Details <ArrowRight className="ml-2 w-5 h-5" />
