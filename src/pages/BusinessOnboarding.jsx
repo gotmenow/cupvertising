@@ -120,7 +120,7 @@ export default function BusinessOnboarding() {
     
     try {
       // Save to database
-      await base44.entities.DistributorEnquiry.create({
+      await base44.entities.BusinessEnquiry.create({
         name: data.name,
         email: email,
         business_name: data.business_name,

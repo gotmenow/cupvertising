@@ -61,7 +61,7 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await base44.entities.DistributorEnquiry.create(partnerForm);
+      await base44.entities.BusinessEnquiry.create(partnerForm);
       setSubmitted(true);
       toast({ title: "Application Received!", description: "We'll be in touch regarding your free inventory." });
     } catch (error) {
