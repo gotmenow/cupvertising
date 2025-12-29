@@ -193,11 +193,42 @@ export default function BusinessOnboarding() {
           )}
 
           {step === 'volume' && (
-            <div className="flex flex-wrap gap-2 justify-end">
-              <OptionButton onClick={() => handleVolumeSelect('Low (< £200)', 200)}>Under £200</OptionButton>
-              <OptionButton onClick={() => handleVolumeSelect('Medium (£200 - £800)', 500)}>£200 - £800</OptionButton>
-              <OptionButton onClick={() => handleVolumeSelect('High (£800 - £2k)', 1400)}>£800 - £2,000</OptionButton>
-              <OptionButton onClick={() => handleVolumeSelect('Enterprise (£2k+)', 3000)}>£2,000+</OptionButton>
+            <div className="flex flex-col gap-3 items-end">
+               <div className="text-xs font-semibold text-amber-600 uppercase tracking-wide">
+                  Typical spend for {data.type}
+               </div>
+               <div className="flex flex-wrap gap-3 justify-end">
+                  {[
+                    { label: 'Under £200', val: 'Low (< £200)', amt: 200 },
+                    { label: '£200 - £800', val: 'Medium (£200 - £800)', amt: 500 },
+                    { label: '£800 - £2,000', val: 'High (£800 - £2k)', amt: 1400 },
+                    { label: '£2,000+', val: 'Enterprise (£2k+)', amt: 3000 }
+                  ].map(opt => {
+                     const isRecommended = (
+                        (data.type?.includes('Cafe') && opt.amt === 1400) ||
+                        (data.type?.includes('Restaurant') && opt.amt === 1400) ||
+                        (data.type?.includes('Event') && opt.amt === 3000) ||
+                        (data.type?.includes('Office') && opt.amt === 500) ||
+                        (data.type?.includes('School') && opt.amt === 500)
+                     );
+                     
+                     return (
+                        <div key={opt.val} className="relative">
+                            {isRecommended && (
+                                <span className="absolute -top-2.5 -right-1 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm animate-bounce">
+                                    Recommended
+                                </span>
+                            )}
+                            <OptionButton 
+                                onClick={() => handleVolumeSelect(opt.val, opt.amt)} 
+                                selected={false} // Don't pre-select visually as "active", just badge it
+                            >
+                                {opt.label}
+                            </OptionButton>
+                        </div>
+                     );
+                  })}
+               </div>
             </div>
           )}
 
