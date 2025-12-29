@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Truck, Coins, Leaf, ArrowRight } from 'lucide-react';
 import { motion } from "framer-motion";
+import ExpenseAuditor from "@/components/business/ExpenseAuditor";
 
 export default function ForBusinesses() {
   const products = [
@@ -97,11 +98,16 @@ export default function ForBusinesses() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
+          </div>
+          </section>
 
-      {/* Benefits Grid */}
-      <section className="py-20 bg-slate-100">
+          {/* Expense Auditor Section */}
+          <section className="bg-slate-50 border-y border-slate-200">
+          <ExpenseAuditor />
+          </section>
+
+          {/* Benefits Grid */}
+          <section className="py-20 bg-slate-100">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="bg-white p-8 rounded-xl shadow-sm">
