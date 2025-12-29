@@ -53,6 +53,17 @@ export default function About() {
                   </div>
                 </div>
               </div>
+
+              <div className="mt-8 border-t pt-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Supporting the UK Economy</h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  We are committed to strengthening the local economy by prioritizing <strong>UK-based manufacturers</strong>. 
+                  Currently outsourcing production to trusted local vendors, our roadmap includes a transition to <strong>in-house manufacturing</strong> after year 1, creating more jobs and infrastructure.
+                </p>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Look out for our upcoming <strong>Web & Mobile Marketplace</strong>, a dedicated platform for businesses and individuals to purchase sustainable products directly.
+                </p>
+              </div>
             </div>
             <div className="relative">
               <div className="absolute -inset-4 bg-amber-100 rounded-2xl transform rotate-3 -z-10"></div>

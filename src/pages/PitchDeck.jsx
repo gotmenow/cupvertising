@@ -127,8 +127,12 @@ export default function PitchDeck() {
         <motion.section {...fadeInUp}>
           <div className="flex items-center gap-4 mb-8">
             <div className="h-10 w-2 bg-amber-500 rounded-full" />
-            <h2 className="text-3xl font-bold text-slate-900">Physical Media Portfolio</h2>
+            <h2 className="text-3xl font-bold text-slate-900">Physical Media Portfolio & UK Economy Support</h2>
           </div>
+          <p className="text-lg text-slate-600 mb-8 max-w-4xl">
+             We support the UK economy by prioritizing <span className="font-bold text-amber-600">local manufacturers</span>. 
+             Initially outsourcing to trusted UK vendors for the first year, we plan to transition to <span className="font-bold text-teal-600">in-house manufacturing</span> to further boost local jobs and supply chain resilience.
+          </p>
           
           <div className="grid md:grid-cols-4 gap-6">
             {[
@@ -232,9 +236,9 @@ export default function PitchDeck() {
                 <div className="w-24 h-24 bg-slate-800 border-2 border-slate-600 rounded-full flex items-center justify-center text-slate-400 font-bold text-xl mb-6 z-10 mx-auto md:mx-0">
                   18m+
                 </div>
-                <h3 className="text-xl font-bold mb-2">Phase 3: Franchise Scale</h3>
+                <h3 className="text-xl font-bold mb-2">Phase 3: Scale & Marketplace</h3>
                 <p className="text-sm text-slate-400">
-                  Launch franchise model. Standardized SOPs, branding, and tech stack to scale rapidly across new territories.
+                  Launch <strong>Web & Mobile Marketplace</strong> for direct product purchases. Transition from outsourced UK manufacturing to <span className="text-teal-400">In-House Production</span> to maximize margins and control.
                 </p>
               </div>
             </div>
@@ -360,6 +364,39 @@ export default function PitchDeck() {
                 </div>
               </div>
             </Card>
+
+            {/* Savings Example */}
+            <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-8">
+               <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                 <span className="bg-green-100 text-green-700 p-2 rounded-lg text-sm">Case Study</span> 
+                 Restaurant Savings Example (Monthly)
+               </h3>
+               <div className="grid md:grid-cols-4 gap-4 text-center">
+                  <div className="bg-white p-4 rounded-xl shadow-sm">
+                    <div className="text-slate-500 text-sm mb-1">Branded Cups (5k)</div>
+                    <div className="text-2xl font-bold text-green-600">£450</div>
+                    <div className="text-xs text-slate-400">Savings</div>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-sm">
+                    <div className="text-slate-500 text-sm mb-1">Burger Boxes (3k)</div>
+                    <div className="text-2xl font-bold text-green-600">£360</div>
+                    <div className="text-xs text-slate-400">Savings</div>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-sm">
+                    <div className="text-slate-500 text-sm mb-1">Paper Bags (3k)</div>
+                    <div className="text-2xl font-bold text-green-600">£210</div>
+                    <div className="text-xs text-slate-400">Savings</div>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl shadow-sm border-l-4 border-amber-500">
+                    <div className="text-slate-900 font-bold text-sm mb-1">Total Monthly Savings</div>
+                    <div className="text-3xl font-bold text-slate-900">£1,020+</div>
+                    <div className="text-xs text-slate-500">Directly to Bottom Line</div>
+                  </div>
+               </div>
+               <p className="text-sm text-slate-500 mt-4 text-center">
+                 *Savings also apply to cutlery, napkins, bin liners, and hygiene supplies.
+               </p>
+            </div>
           </div>
 
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-slate-200">
