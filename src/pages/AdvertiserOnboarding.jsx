@@ -13,6 +13,7 @@ export default function AdvertiserOnboarding() {
   const [step, setStep] = useState('start');
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [tempAudiences, setTempAudiences] = useState([]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -48,9 +49,19 @@ export default function AdvertiserOnboarding() {
     }, 500);
   };
 
-  const handleAudienceSelect = (audience) => {
-    addToHistory('user', audience);
-    setData(prev => ({ ...prev, audience }));
+  const toggleAudience = (audience) => {
+    setTempAudiences(prev => 
+      prev.includes(audience) 
+        ? prev.filter(a => a !== audience)
+        : [...prev, audience]
+    );
+  };
+
+  const confirmAudience = () => {
+    if (tempAudiences.length === 0) return;
+    const audienceString = tempAudiences.join(", ");
+    addToHistory('user', audienceString);
+    setData(prev => ({ ...prev, audience: audienceString }));
     setStep('budget');
     setTimeout(() => {
       addToHistory('system', "Excellent. Lastly, what is your estimated monthly campaign budget?");
@@ -186,12 +197,31 @@ export default function AdvertiserOnboarding() {
           )}
 
           {step === 'audience' && (
-            <div className="flex flex-wrap gap-2 justify-end">
-              {['Students / Gen Z', 'Office Workers', 'Families', 'Event Goers', 'High Net Worth'].map(aud => (
-                <OptionButton key={aud} onClick={() => handleAudienceSelect(aud)}>
-                  {aud}
-                </OptionButton>
-              ))}
+            <div className="space-y-4">
+              <div className="flex flex-wrap gap-2 justify-end max-h-[60vh] overflow-y-auto p-1">
+                {[
+                  "Gen Z (18-24)", "Millennials (25-40)", "Gen X (41-55)", 
+                  "Students", "Office Professionals", "Parents", "Tourists",
+                  "Foodies", "Tech Enthusiasts", "Fitness & Health", "Nightlife"
+                ].map(aud => (
+                  <OptionButton 
+                    key={aud} 
+                    onClick={() => toggleAudience(aud)}
+                    selected={tempAudiences.includes(aud)}
+                  >
+                    {aud}
+                  </OptionButton>
+                ))}
+              </div>
+              <div className="flex justify-end">
+                <Button 
+                  onClick={confirmAudience}
+                  disabled={tempAudiences.length === 0}
+                  className="rounded-full px-6"
+                >
+                  Confirm Selection <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </div>
             </div>
           )}
 
