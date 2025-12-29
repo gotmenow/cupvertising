@@ -13,12 +13,37 @@ import RecentTransactions from "../components/finance/RecentTransactions";
 export default function Finance() {
   const queryClient = useQueryClient();
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [user, setUser] = React.useState(null);
+  const [checkingAuth, setCheckingAuth] = React.useState(true);
+
+  React.useEffect(() => {
+    base44.auth.me().then(u => {
+      setUser(u);
+      setCheckingAuth(false);
+    }).catch(() => {
+      setUser(null);
+      setCheckingAuth(false);
+    });
+  }, []);
 
   const { data: transactions, isLoading } = useQuery({
     queryKey: ['transactions'],
     queryFn: () => base44.entities.Transaction.list({ sort: { date: -1 } }),
     initialData: [],
+    enabled: !!user && user.role === 'admin',
   });
+
+  if (checkingAuth) return <div className="flex h-screen items-center justify-center"><Loader2 className="animate-spin h-8 w-8 text-slate-500" /></div>;
+
+  if (!user || user.role !== 'admin') {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] p-8 text-center">
+        <h1 className="text-2xl font-bold text-slate-900 mb-4">Access Restricted</h1>
+        <p className="text-slate-600 mb-6">This page is only accessible to administrators.</p>
+        <Button onClick={() => base44.auth.redirectToLogin(window.location.href)}>Login as Admin</Button>
+      </div>
+    );
+  }
 
   const createTransaction = useMutation({
     mutationFn: (data) => base44.entities.Transaction.create(data),
