@@ -4,7 +4,7 @@ import { createPageUrl } from '../utils';
 import { base44 } from "@/api/base44Client";
 import { ChatMessage, OptionButton, ChatInput } from '@/components/onboarding/ChatComponents';
 import { Button } from "@/components/ui/button";
-import { Loader2, Sparkles, Coins, ArrowLeft } from 'lucide-react';
+import { Loader2, Sparkles, Coins, ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function BusinessOnboarding() {
