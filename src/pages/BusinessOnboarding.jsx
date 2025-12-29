@@ -245,12 +245,40 @@ export default function BusinessOnboarding() {
 function ProductSelector({ onSelect, businessType }) {
   const [selected, setSelected] = useState([]);
   
-  const getOptions = () => {
-    if (businessType?.includes('Cafe') || businessType?.includes('Restaurant')) return ['Coffee Cups', 'Napkins', 'Takeaway Boxes', 'Paper Bags', 'Cutlery'];
-    if (businessType?.includes('Office')) return ['Printer Paper', 'Notepads', 'Pens', 'Envelopes'];
-    if (businessType?.includes('Event')) return ['Wristbands', 'Event Cups', 'Tickets', 'Lanyards'];
-    return ['Cups', 'Paper Products', 'Cleaning Supplies', 'Packaging'];
+  const getRecommendations = () => {
+    const all = [
+      'Coffee Cups', 'Napkins', 'Takeaway Boxes', 'Paper Bags', 'Cutlery',
+      'Printer Paper', 'Notepads', 'Pens', 'Envelopes',
+      'Wristbands', 'Event Cups', 'Tickets', 'Lanyards',
+      'Bin Liners', 'Cleaning Wipes', 'Receipt Rolls'
+    ];
+
+    let recommended = [];
+    if (businessType?.includes('Cafe') || businessType?.includes('Restaurant')) {
+      recommended = ['Coffee Cups', 'Napkins', 'Takeaway Boxes', 'Paper Bags', 'Cutlery', 'Receipt Rolls'];
+    } else if (businessType?.includes('Office')) {
+      recommended = ['Printer Paper', 'Notepads', 'Pens', 'Envelopes', 'Bin Liners'];
+    } else if (businessType?.includes('Event')) {
+      recommended = ['Wristbands', 'Event Cups', 'Tickets', 'Lanyards', 'Napkins'];
+    } else {
+      recommended = ['Coffee Cups', 'Printer Paper', 'Bin Liners'];
+    }
+
+    const others = all.filter(x => !recommended.includes(x));
+    return { recommended, others };
   };
+
+  const { recommended, others } = getRecommendations();
+  const [showOthers, setShowOthers] = useState(false);
+
+  // Pre-select first 3 recommended items on load if empty
+  useEffect(() => {
+    if (selected.length === 0 && recommended.length > 0) {
+      // Optional: pre-select items. 
+      // setSelected(recommended.slice(0, 3)); 
+      // The user might prefer to choose, let's just show them as recommended.
+    }
+  }, []);
 
   const toggle = (item) => {
     if (selected.includes(item)) setSelected(s => s.filter(i => i !== item));
@@ -259,12 +287,34 @@ function ProductSelector({ onSelect, businessType }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap gap-2 justify-end">
-        {getOptions().map(item => (
-          <OptionButton key={item} onClick={() => toggle(item)} selected={selected.includes(item)}>
-            {item} {selected.includes(item) && <Check className="w-4 h-4 inline ml-1" />}
-          </OptionButton>
-        ))}
+      <div className="flex flex-col items-end gap-4">
+        <div className="text-right">
+             <div className="text-xs font-semibold text-amber-600 mb-2 uppercase tracking-wide">Recommended for {businessType}</div>
+             <div className="flex flex-wrap gap-2 justify-end">
+                {recommended.map(item => (
+                <OptionButton key={item} onClick={() => toggle(item)} selected={selected.includes(item)}>
+                    {item} {selected.includes(item) && <Check className="w-4 h-4 inline ml-1" />}
+                </OptionButton>
+                ))}
+             </div>
+        </div>
+
+        {showOthers ? (
+            <div className="text-right animate-in fade-in slide-in-from-top-2">
+                <div className="text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wide">Other Items</div>
+                <div className="flex flex-wrap gap-2 justify-end">
+                    {others.map(item => (
+                    <OptionButton key={item} onClick={() => toggle(item)} selected={selected.includes(item)}>
+                        {item} {selected.includes(item) && <Check className="w-4 h-4 inline ml-1" />}
+                    </OptionButton>
+                    ))}
+                </div>
+            </div>
+        ) : (
+            <button onClick={() => setShowOthers(true)} className="text-xs text-slate-500 hover:text-amber-600 underline underline-offset-4">
+                Show more options
+            </button>
+        )}
       </div>
       <div className="flex justify-end">
          <Button 
