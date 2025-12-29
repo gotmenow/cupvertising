@@ -14,6 +14,7 @@ export default function AdvertiserOnboarding() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [tempAudiences, setTempAudiences] = useState([]);
+  const [tempLocations, setTempLocations] = useState([]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -36,13 +37,23 @@ export default function AdvertiserOnboarding() {
     setData(prev => ({ ...prev, name }));
     setStep('location');
     setTimeout(() => {
-      addToHistory('system', `Nice to meet you, ${name}. Which city or region are you targeting?`);
+      addToHistory('system', `Nice to meet you, ${name}. Which cities or regions are you targeting? (Select all that apply)`);
     }, 500);
   };
 
-  const handleLocationSubmit = (location) => {
-    addToHistory('user', location);
-    setData(prev => ({ ...prev, location }));
+  const toggleLocation = (loc) => {
+    setTempLocations(prev => 
+      prev.includes(loc) 
+        ? prev.filter(l => l !== loc)
+        : [...prev, loc]
+    );
+  };
+
+  const confirmLocation = () => {
+    if (tempLocations.length === 0) return;
+    const locationString = tempLocations.join(", ");
+    addToHistory('user', locationString);
+    setData(prev => ({ ...prev, location: locationString }));
     setStep('audience');
     setTimeout(() => {
       addToHistory('system', "Got it. And who is your primary target audience?");
@@ -193,7 +204,32 @@ export default function AdvertiserOnboarding() {
           )}
 
           {step === 'location' && (
-            <ChatInput onSend={handleLocationSubmit} placeholder="E.g. London, Manchester, Nationwide" />
+            <div className="space-y-4">
+              <div className="flex flex-wrap gap-2 justify-end max-h-[60vh] overflow-y-auto p-1">
+                {[
+                  "London", "Manchester", "Birmingham", "Leeds", "Liverpool", 
+                  "Glasgow", "Edinburgh", "Bristol", "Cardiff", "Newcastle",
+                  "Nottingham", "Sheffield", "Southampton", "Nationwide"
+                ].map(loc => (
+                  <OptionButton 
+                    key={loc} 
+                    onClick={() => toggleLocation(loc)}
+                    selected={tempLocations.includes(loc)}
+                  >
+                    {loc}
+                  </OptionButton>
+                ))}
+              </div>
+              <div className="flex justify-end">
+                <Button 
+                  onClick={confirmLocation}
+                  disabled={tempLocations.length === 0}
+                  className="rounded-full px-6"
+                >
+                  Confirm Locations <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </div>
+            </div>
           )}
 
           {step === 'audience' && (
