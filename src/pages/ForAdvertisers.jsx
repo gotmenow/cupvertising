@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Eye, Target, HandMetal, Coffee, Pizza, Megaphone, ArrowRight, Briefcase, GraduationCap, Globe, Truck } from 'lucide-react';
 import { motion } from "framer-motion";
+import AdForecaster from "@/components/advertiser/AdForecaster";
 
 export default function ForAdvertisers() {
   const mediums = [
@@ -73,6 +74,11 @@ export default function ForAdvertisers() {
             </Link>
           </motion.div>
         </div>
+      </section>
+
+      {/* Ad Forecaster Section */}
+      <section className="bg-slate-50 border-b border-slate-200">
+        <AdForecaster />
       </section>
 
       {/* Tech Stack - Smart Assets */}
