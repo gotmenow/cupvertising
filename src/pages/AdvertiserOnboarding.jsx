@@ -98,18 +98,39 @@ export default function AdvertiserOnboarding() {
     }, 500);
   };
 
+  const handleStartRequest = () => {
+    addToHistory('user', "Yes, Request Proposal");
+    setStep('details_contact');
+    setTimeout(() => addToHistory('system', "Perfect. To personalize your proposal, what is your full name?"), 500);
+  };
+
+  const handleContactSubmit = (contactName) => {
+    addToHistory('user', contactName);
+    setData(prev => ({ ...prev, contactName }));
+    setStep('details_phone');
+    setTimeout(() => addToHistory('system', "And the best phone number to reach you?"), 500);
+  };
+
+  const handlePhoneSubmit = (phone) => {
+    addToHistory('user', phone);
+    setData(prev => ({ ...prev, phone }));
+    setStep('details_email');
+    setTimeout(() => addToHistory('system', "Finally, your email address?"), 500);
+  };
+
   const handleEmailSubmit = async (email) => {
     addToHistory('user', email);
     setLoading(true);
     
     try {
       await base44.entities.AdvertiserEnquiry.create({
-        name: "Onboarding User",
+        name: data.contactName,
         email: email,
         business_name: data.name,
+        phone: data.phone,
         target_audience: `${data.audience} in ${data.location}`,
         campaign_budget: data.budgetRange,
-        interested_mediums: ["Beverage Cups & Napkins"], // Default
+        interested_mediums: ["Beverage Cups & Napkins"],
         message: `Chat Onboarding: Budget £${data.budgetValue}`
       });
 
@@ -184,7 +205,23 @@ export default function AdvertiserOnboarding() {
           )}
 
           {step === 'results' && (
-            <ChatInput onSend={handleEmailSubmit} placeholder="Enter email to get media kit..." type="email" />
+            <div className="flex justify-center w-full">
+              <Button onClick={handleStartRequest} className="bg-teal-600 hover:bg-teal-700 text-white text-lg px-8 py-6 h-auto rounded-full shadow-lg animate-pulse">
+                Yes, Request Proposal <Megaphone className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
+          )}
+
+          {step === 'details_contact' && (
+            <ChatInput onSend={handleContactSubmit} placeholder="Your Full Name..." />
+          )}
+
+          {step === 'details_phone' && (
+            <ChatInput onSend={handlePhoneSubmit} placeholder="Phone Number..." type="tel" />
+          )}
+
+          {step === 'details_email' && (
+            <ChatInput onSend={handleEmailSubmit} placeholder="Email Address..." type="email" />
           )}
 
           {step === 'completed' && (
