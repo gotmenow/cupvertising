@@ -8,6 +8,7 @@ import Franchise from './pages/Franchise';
 import Home from './pages/Home';
 import HowItWorks from './pages/HowItWorks';
 import PitchDeck from './pages/PitchDeck';
+import Finance from './pages/Finance';
 import __Layout from './Layout.jsx';
 
 
@@ -22,6 +23,7 @@ export const PAGES = {
     "Home": Home,
     "HowItWorks": HowItWorks,
     "PitchDeck": PitchDeck,
+    "Finance": Finance,
 }
 
 export const pagesConfig = {
