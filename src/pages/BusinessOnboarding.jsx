@@ -80,6 +80,40 @@ export default function BusinessOnboarding() {
     }, 500);
   };
 
+  const handleStartEnrollment = () => {
+    addToHistory('user', "Yes, claim my free inventory");
+    setStep('details_name');
+    setTimeout(() => addToHistory('system', "Fantastic! Let's get your account set up. What is your full name?"), 500);
+  };
+
+  const handleNameSubmit = (name) => {
+    addToHistory('user', name);
+    setData(prev => ({ ...prev, name }));
+    setStep('details_business');
+    setTimeout(() => addToHistory('system', "And what is the name of your business?"), 500);
+  };
+
+  const handleBusinessSubmit = (business_name) => {
+    addToHistory('user', business_name);
+    setData(prev => ({ ...prev, business_name }));
+    setStep('details_phone');
+    setTimeout(() => addToHistory('system', "What is the best phone number to reach you?"), 500);
+  };
+
+  const handlePhoneSubmit = (phone) => {
+    addToHistory('user', phone);
+    setData(prev => ({ ...prev, phone }));
+    setStep('details_address');
+    setTimeout(() => addToHistory('system', "Where are you located? (City or full address)"), 500);
+  };
+
+  const handleAddressSubmit = (address) => {
+    addToHistory('user', address);
+    setData(prev => ({ ...prev, address }));
+    setStep('details_email');
+    setTimeout(() => addToHistory('system', "Finally, what is your email address?"), 500);
+  };
+
   const handleEmailSubmit = async (email) => {
     addToHistory('user', email);
     setLoading(true);
@@ -87,12 +121,14 @@ export default function BusinessOnboarding() {
     try {
       // Save to database
       await base44.entities.DistributorEnquiry.create({
-        name: "Onboarding User",
+        name: data.name,
         email: email,
-        business_name: "Pending Details",
+        business_name: data.business_name,
+        phone: data.phone,
+        address: data.address,
         business_type: data.type,
         interested_products: data.products || [],
-        weekly_volume: "Medium (500 - 2,000 items)", // Default mapping
+        weekly_volume: data.amount > 2000 ? "Enterprise (10,000+ items)" : "Medium (500 - 2,000 items)",
         message: `Chat Onboarding: Estimated monthly spend £${data.amount}`
       });
 
@@ -166,9 +202,31 @@ export default function BusinessOnboarding() {
           )}
 
           {step === 'results' && (
-            <div className="w-full">
-               <ChatInput onSend={handleEmailSubmit} placeholder="Enter your email to apply..." type="email" />
+            <div className="flex justify-center w-full">
+              <Button onClick={handleStartEnrollment} className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 py-6 h-auto rounded-full shadow-lg animate-pulse">
+                Yes, Claim Free Inventory <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
             </div>
+          )}
+
+          {step === 'details_name' && (
+            <ChatInput onSend={handleNameSubmit} placeholder="Your Full Name..." />
+          )}
+
+          {step === 'details_business' && (
+            <ChatInput onSend={handleBusinessSubmit} placeholder="Business Name..." />
+          )}
+
+          {step === 'details_phone' && (
+            <ChatInput onSend={handlePhoneSubmit} placeholder="Phone Number..." type="tel" />
+          )}
+
+          {step === 'details_address' && (
+            <ChatInput onSend={handleAddressSubmit} placeholder="Full Address or City..." />
+          )}
+
+          {step === 'details_email' && (
+            <ChatInput onSend={handleEmailSubmit} placeholder="Email Address..." type="email" />
           )}
           
            {step === 'completed' && (
