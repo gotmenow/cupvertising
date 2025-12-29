@@ -4,6 +4,7 @@ import { createPageUrl } from '../utils';
 import { base44 } from "@/api/base44Client";
 import { ChatMessage, OptionButton, ChatInput } from '@/components/onboarding/ChatComponents';
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Loader2, Target, Megaphone, ArrowLeft, ArrowRight, Plus, X } from 'lucide-react';
 
 export default function AdvertiserOnboarding() {
