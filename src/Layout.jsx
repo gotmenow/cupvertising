@@ -3,9 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { Menu, X, Coffee, Megaphone, Info, Mail, Home, Presentation, Users, Briefcase } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { base44 } from "@/api/base44Client";
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [user, setUser] = React.useState(null);
+
+  React.useEffect(() => {
+    base44.auth.me().then(setUser).catch(() => setUser(null));
+  }, []);
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
@@ -19,6 +25,10 @@ export default function Layout({ children }) {
         { name: 'About Us', path: '/About', icon: Users },
         { name: 'Contact', path: '/Contact', icon: Mail },
       ];
+
+  if (user?.role === 'admin') {
+     navItems.push({ name: 'Finance', path: '/Finance', icon: Briefcase });
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans text-slate-900">
