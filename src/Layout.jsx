@@ -15,7 +15,6 @@ export default function Layout({ children }) {
         { name: 'For Businesses', path: '/ForBusinesses', icon: Coffee },
         { name: 'For Advertisers', path: '/ForAdvertisers', icon: Megaphone },
         { name: 'Franchise', path: '/Franchise', icon: Briefcase },
-        { name: 'Finance', path: '/Finance', icon: Briefcase },
         { name: 'Pitch Deck', path: '/PitchDeck', icon: Presentation },
         { name: 'About Us', path: '/About', icon: Users },
         { name: 'Contact', path: '/Contact', icon: Mail },
