@@ -31,8 +31,8 @@ export default function BusinessOnboarding() {
   useEffect(() => {
     addToHistory('system', "Hi there! 👋 I'm your Cupvertising assistant.");
     setTimeout(() => {
-      addToHistory('system', "I can help you identify recurring expenses we can replace for free. First, what type of business do you run?");
-      setStep('type');
+      addToHistory('system', "To get started, what is your full name?");
+      setStep('intro_name');
     }, 800);
   }, []);
 
