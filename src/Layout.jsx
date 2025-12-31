@@ -30,6 +30,12 @@ export default function Layout({ children }) {
      navItems.push({ name: 'Finance', path: '/Finance', icon: Briefcase });
   }
 
+  // Check for standalone pages (onboarding flows)
+  const isStandalonePage = ['/BusinessOnboarding', '/AdvertiserOnboarding'].includes(location.pathname);
+  if (isStandalonePage) {
+      return <>{children}</>;
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans text-slate-900">
       {/* Header */}
