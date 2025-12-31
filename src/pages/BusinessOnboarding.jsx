@@ -40,6 +40,33 @@ export default function BusinessOnboarding() {
     setHistory(prev => [...prev, { id: Date.now(), role, content, component }]);
   };
 
+  const handleIntroName = (name) => {
+    addToHistory('user', name);
+    setData(prev => ({ ...prev, name }));
+    setStep('intro_email');
+    setTimeout(() => {
+      addToHistory('system', `Nice to meet you, ${name.split(' ')[0]}! What is your email address?`);
+    }, 500);
+  };
+
+  const handleIntroEmail = (email) => {
+    addToHistory('user', email);
+    setData(prev => ({ ...prev, email }));
+    setStep('intro_phone');
+    setTimeout(() => {
+        addToHistory('system', "And the best phone number to reach you?");
+    }, 500);
+  };
+
+  const handleIntroPhone = (phone) => {
+    addToHistory('user', phone);
+    setData(prev => ({ ...prev, phone }));
+    setStep('type');
+    setTimeout(() => {
+        addToHistory('system', "Thanks! Now, let's identify your savings. What type of business do you run?");
+    }, 500);
+  };
+
   const handleTypeSelect = (type) => {
     addToHistory('user', type);
     setData(prev => ({ ...prev, type }));
