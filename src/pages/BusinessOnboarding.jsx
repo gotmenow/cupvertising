@@ -9,16 +9,23 @@ import { motion } from 'framer-motion';
 
 export default function BusinessOnboarding() {
   const navigate = useNavigate();
+  const mainRef = useRef(null);
   const bottomRef = useRef(null);
   const [history, setHistory] = useState([]);
   const [step, setStep] = useState('start');
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // Auto-scroll to bottom
+  // Auto-scroll logic
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [history]);
+    if (mainRef.current) {
+        // Scroll container to bottom
+        mainRef.current.scrollTo({
+            top: mainRef.current.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+  }, [history, step]); // Re-scroll when step changes (input area might change height)
 
   // Initial greeting
   useEffect(() => {
