@@ -86,14 +86,32 @@ export default function BusinessOnboarding() {
     }, 500);
   };
 
-  const handleVolumeSelect = (volume, amount) => {
+  const handleVolumeSelect = async (volume, amount) => {
     addToHistory('user', volume);
-    setData(prev => ({ ...prev, volume, amount }));
+    const updatedData = { ...data, volume, amount };
+    setData(updatedData);
     setStep('calculating');
     
-    setTimeout(() => {
+    setTimeout(async () => {
       addToHistory('system', "Crunching the numbers...");
       setLoading(true);
+
+      // Create enquiry in background
+      try {
+        const enquiry = await base44.entities.BusinessEnquiry.create({
+          name: updatedData.name,
+          email: updatedData.email,
+          phone: updatedData.phone,
+          business_type: updatedData.type,
+          interested_products: updatedData.products || [],
+          weekly_volume: amount > 2000 ? "Enterprise (10,000+ items)" : "Medium (500 - 2,000 items)",
+          message: `Chat Onboarding: Estimated monthly spend £${amount} (Partial Save)`
+        });
+        setData(prev => ({ ...prev, enquiryId: enquiry.id }));
+      } catch (err) {
+        console.error("Failed to partial save:", err);
+      }
+
       setTimeout(() => {
         setLoading(false);
         const annualSavings = amount * 12;
@@ -106,7 +124,7 @@ export default function BusinessOnboarding() {
               <div className="text-4xl font-bold text-green-700">£{annualSavings.toLocaleString()}</div>
               <p className="text-sm text-green-600 mt-2">That's £{amount} back in your pocket every month!</p>
             </div>
-            <p>We can supply your {data.products?.slice(0, 3).join(', ')} completely free of charge, funded by non-intrusive ads.</p>
+            <p>We can supply your {updatedData.products?.slice(0, 3).join(', ')} completely free of charge, funded by non-intrusive ads.</p>
             <p className="font-medium">Ready to claim your free inventory?</p>
           </div>
         ));
