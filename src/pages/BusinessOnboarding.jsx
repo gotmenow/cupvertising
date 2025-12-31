@@ -102,6 +102,7 @@ export default function BusinessOnboarding() {
           name: updatedData.name,
           email: updatedData.email,
           phone: updatedData.phone,
+          business_name: "(Pending Business Name)", // Placeholder to ensure creation
           business_type: updatedData.type,
           interested_products: updatedData.products || [],
           weekly_volume: amount > 2000 ? "Enterprise (10,000+ items)" : "Medium (500 - 2,000 items)",
@@ -109,7 +110,7 @@ export default function BusinessOnboarding() {
         });
         setData(prev => ({ ...prev, enquiryId: enquiry.id }));
       } catch (err) {
-        console.error("Failed to partial save:", err);
+        console.error("Failed to partial save:", JSON.stringify(err));
       }
 
       setTimeout(() => {
