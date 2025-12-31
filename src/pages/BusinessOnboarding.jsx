@@ -116,50 +116,30 @@ export default function BusinessOnboarding() {
 
   const handleStartEnrollment = () => {
     addToHistory('user', "Yes, claim my free inventory");
-    setStep('details_name');
-    setTimeout(() => addToHistory('system', "Fantastic! Let's get your account set up. What is your full name?"), 500);
-  };
-
-  const handleNameSubmit = (name) => {
-    addToHistory('user', name);
-    setData(prev => ({ ...prev, name }));
     setStep('details_business');
-    setTimeout(() => addToHistory('system', "And what is the name of your business?"), 500);
+    setTimeout(() => addToHistory('system', "Fantastic! To finalize your account, what is the name of your business?"), 500);
   };
 
   const handleBusinessSubmit = (business_name) => {
     addToHistory('user', business_name);
     setData(prev => ({ ...prev, business_name }));
-    setStep('details_phone');
-    setTimeout(() => addToHistory('system', "What is the best phone number to reach you?"), 500);
-  };
-
-  const handlePhoneSubmit = (phone) => {
-    addToHistory('user', phone);
-    setData(prev => ({ ...prev, phone }));
     setStep('details_address');
-    setTimeout(() => addToHistory('system', "Where are you located? (City or full address)"), 500);
+    setTimeout(() => addToHistory('system', "And where are you located? (City or full address)"), 500);
   };
 
-  const handleAddressSubmit = (address) => {
+  const handleAddressSubmit = async (address) => {
     addToHistory('user', address);
     setData(prev => ({ ...prev, address }));
-    setStep('details_email');
-    setTimeout(() => addToHistory('system', "Finally, what is your email address?"), 500);
-  };
-
-  const handleEmailSubmit = async (email) => {
-    addToHistory('user', email);
     setLoading(true);
     
     try {
       // Save to database
       await base44.entities.BusinessEnquiry.create({
         name: data.name,
-        email: email,
-        business_name: data.business_name,
+        email: data.email,
+        business_name: data.business_name, // from state
         phone: data.phone,
-        address: data.address,
+        address: address, // current input
         business_type: data.type,
         interested_products: data.products || [],
         weekly_volume: data.amount > 2000 ? "Enterprise (10,000+ items)" : "Medium (500 - 2,000 items)",
