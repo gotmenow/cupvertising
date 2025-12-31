@@ -192,6 +192,18 @@ export default function BusinessOnboarding() {
       {/* Input Area */}
       <div className="flex-none bg-white border-t p-4 pb-8 z-20">
         <div className="max-w-2xl mx-auto">
+          {step === 'intro_name' && (
+            <ChatInput onSend={handleIntroName} placeholder="Your Full Name..." />
+          )}
+
+          {step === 'intro_email' && (
+            <ChatInput onSend={handleIntroEmail} placeholder="Email Address..." type="email" />
+          )}
+
+          {step === 'intro_phone' && (
+            <ChatInput onSend={handleIntroPhone} placeholder="Phone Number..." type="tel" />
+          )}
+
           {step === 'type' && (
             <div className="space-y-4">
                 <div className="flex flex-wrap gap-2 justify-end">
