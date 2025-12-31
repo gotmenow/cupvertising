@@ -15,7 +15,7 @@ export default function Franchise() {
     {
       title: "Exclusive Territory",
       icon: MapPin,
-      desc: "Own the rights to Cupvertising in your city or region. No competition from other franchisees."
+      desc: "Own the rights to Vertising in your city or region. No competition from other franchisees."
     },
     {
       title: "Recurring Revenue",
@@ -66,7 +66,7 @@ export default function Franchise() {
           >
             <Badge className="bg-amber-500 text-black mb-6 px-4 py-1 text-sm font-bold">FRANCHISE OPPORTUNITY</Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Own a <span className="text-amber-500">Cupvertising</span> Territory.
+              Own a <span className="text-amber-500">Vertising</span> Territory.
             </h1>
             <p className="text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
               Launch a high-growth media business in your city. Connect local businesses with free supplies and help brands reach their audience. 

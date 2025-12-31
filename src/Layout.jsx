@@ -43,12 +43,11 @@ export default function Layout({ children }) {
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link to={createPageUrl('Home')} className="flex items-center gap-2 group">
-            <div className="bg-amber-700 text-white p-2 rounded-lg group-hover:bg-amber-600 transition-colors">
-              <Coffee className="h-6 w-6" />
-            </div>
-            <span className="text-2xl font-bold tracking-tight text-slate-900">
-              Cup<span className="text-amber-700">vertising</span>
-            </span>
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/692cc2f66d83ac4c3986cd4f/878d6e009_Logo.png" 
+              alt="Vertising Logo" 
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -114,7 +113,7 @@ export default function Layout({ children }) {
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-4 text-white">
                 <Coffee className="h-6 w-6" />
-                <span className="text-xl font-bold">Cupvertising</span>
+                <span className="text-xl font-bold">Vertising</span>
               </div>
               <p className="text-slate-400 max-w-sm">
                 The UK's premier physical media network. Connecting local businesses with free inventory and brands with hands-on exposure.
@@ -138,7 +137,7 @@ export default function Layout({ children }) {
             </div>
           </div>
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-sm text-slate-500">
-            © {new Date().getFullYear()} Cupvertising UK. All rights reserved.
+            © {new Date().getFullYear()} Vertising UK. All rights reserved.
           </div>
         </div>
       </footer>

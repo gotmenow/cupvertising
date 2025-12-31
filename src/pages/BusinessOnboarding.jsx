@@ -29,7 +29,7 @@ export default function BusinessOnboarding() {
 
   // Initial greeting
   useEffect(() => {
-    addToHistory('system', "Hi there! 👋 I'm your Cupvertising assistant.");
+    addToHistory('system', "Hi there! 👋 I'm your Vertising assistant.");
     setTimeout(() => {
       addToHistory('system', "To get started, what is your full name?");
       setStep('intro_name');

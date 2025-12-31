@@ -10,7 +10,7 @@ export default function HowItWorks() {
     <div className="flex flex-col">
       <section className="bg-slate-900 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Cupvertising in 3 Simple Steps</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Vertising in 3 Simple Steps</h1>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
             We've streamlined the process to make product advertising effortless for everyone involved.
           </p>

@@ -322,7 +322,7 @@ export default function Contact() {
             <TabsContent value="franchise" className="p-6 md:p-8">
                 <div className="mb-6">
                 <h2 className="text-2xl font-bold text-slate-900">Franchise Application</h2>
-                <p className="text-slate-500">Apply to own a Cupvertising territory in your city.</p>
+                <p className="text-slate-500">Apply to own a Vertising territory in your city.</p>
               </div>
               <form onSubmit={handleFranchiseSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">

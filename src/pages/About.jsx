@@ -11,7 +11,7 @@ export default function About() {
       {/* Hero */}
       <section className="bg-slate-900 py-20 text-center text-white">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Cupvertising UK</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Vertising UK</h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Innovating the intersection of sustainability, marketing, and local business support.
           </p>
@@ -28,7 +28,7 @@ export default function About() {
               </div>
               <h2 className="text-3xl font-bold text-slate-900">Backed by Experience</h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Cupvertising UK is a proud venture of <span className="font-bold text-slate-900">Gotmenow LTD</span>.
+                Vertising UK is a proud venture of <span className="font-bold text-slate-900">Gotmenow LTD</span>.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 With over <span className="font-bold">10 years of market experience</span>, Gotmenow LTD has a proven track record of delivering innovative business solutions and operational excellence. Our decade-long journey has been defined by a commitment to quality, reliability, and sustainable growth.
