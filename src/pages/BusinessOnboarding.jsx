@@ -151,18 +151,23 @@ export default function BusinessOnboarding() {
     setLoading(true);
     
     try {
-      // Save to database
-      await base44.entities.BusinessEnquiry.create({
+      const payload = {
         name: data.name,
         email: data.email,
-        business_name: data.business_name, // from state
+        business_name: data.business_name,
         phone: data.phone,
-        address: address, // current input
+        address: address,
         business_type: data.type,
         interested_products: data.products || [],
         weekly_volume: data.amount > 2000 ? "Enterprise (10,000+ items)" : "Medium (500 - 2,000 items)",
         message: `Chat Onboarding: Estimated monthly spend £${data.amount}`
-      });
+      };
+
+      if (data.enquiryId) {
+        await base44.entities.BusinessEnquiry.update(data.enquiryId, payload);
+      } else {
+        await base44.entities.BusinessEnquiry.create(payload);
+      }
 
       setLoading(false);
       setStep('completed');
