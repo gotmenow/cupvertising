@@ -27,12 +27,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-sm font-medium mb-6 border border-amber-500/30">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm font-medium mb-6 border border-blue-500/30">
               <Sparkles className="w-4 h-4" /> Revolutionizing Consumables
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Beyond Static Ads: <br/>
-              <span className="text-amber-500">Smart Assets & Printed Logic.</span>
+              <span className="text-blue-500">Smart Assets & Printed Logic.</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
               We transform essential consumables into "Smart Assets" using WebAR, Thermochromic Inks, and Blockchain tracking. 
@@ -41,7 +41,7 @@ export default function Home() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to={createPageUrl('ForBusinesses')}>
-                <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white min-w-[240px] h-14 text-lg font-semibold rounded-xl shadow-lg shadow-amber-900/20">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white min-w-[240px] h-14 text-lg font-semibold rounded-xl shadow-lg shadow-blue-900/20">
                   Join Network (Free)
                 </Button>
               </Link>
@@ -66,7 +66,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="border-slate-100 shadow-md hover:shadow-xl transition-all">
               <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <UtensilsCrossed className="w-7 h-7" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">Food & Hospitality</h3>

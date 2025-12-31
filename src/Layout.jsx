@@ -46,7 +46,7 @@ export default function Layout({ children }) {
             <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/692cc2f66d83ac4c3986cd4f/878d6e009_Logo.png" 
               alt="Vertising Logo" 
-              className="h-10 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
           </Link>
 
@@ -56,9 +56,9 @@ export default function Layout({ children }) {
               <Link
                 key={item.path}
                 to={createPageUrl(item.name === 'Home' ? 'Home' : item.name.replace(/\s+/g, ''))}
-                className={`text-sm font-medium transition-colors hover:text-amber-700 ${
+                className={`text-sm font-medium transition-colors hover:text-blue-700 ${
                   isActive('/' + (item.name === 'Home' ? '' : item.name.replace(/\s+/g, ''))) 
-                    ? 'text-amber-700' 
+                    ? 'text-blue-700' 
                     : 'text-slate-600'
                 }`}
               >
@@ -89,7 +89,7 @@ export default function Layout({ children }) {
                 <Link
                   key={item.path}
                   to={createPageUrl(item.name === 'Home' ? 'Home' : item.name.replace(/\s+/g, ''))}
-                  className="flex items-center gap-2 text-lg font-medium text-slate-600 hover:text-amber-700"
+                  className="flex items-center gap-2 text-lg font-medium text-slate-600 hover:text-blue-700"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <item.icon className="h-5 w-5" />
@@ -122,17 +122,17 @@ export default function Layout({ children }) {
             <div>
               <h3 className="font-bold text-white mb-4">Company</h3>
               <ul className="space-y-2">
-                <li><Link to={createPageUrl('Home')} className="hover:text-amber-500 transition-colors">Home</Link></li>
-                <li><Link to={createPageUrl('About')} className="hover:text-amber-500 transition-colors">About Us</Link></li>
-                <li><Link to={createPageUrl('Contact')} className="hover:text-amber-500 transition-colors">Contact</Link></li>
+                <li><Link to={createPageUrl('Home')} className="hover:text-blue-500 transition-colors">Home</Link></li>
+                <li><Link to={createPageUrl('About')} className="hover:text-blue-500 transition-colors">About Us</Link></li>
+                <li><Link to={createPageUrl('Contact')} className="hover:text-blue-500 transition-colors">Contact</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-bold text-white mb-4">Services</h3>
               <ul className="space-y-2">
-                <li><Link to={createPageUrl('ForBusinesses')} className="hover:text-amber-500 transition-colors">For Distribution Partners</Link></li>
-                <li><Link to={createPageUrl('ForAdvertisers')} className="hover:text-amber-500 transition-colors">For Advertisers</Link></li>
-                <li><Link to={createPageUrl('HowItWorks')} className="hover:text-amber-500 transition-colors">How It Works</Link></li>
+                <li><Link to={createPageUrl('ForBusinesses')} className="hover:text-blue-500 transition-colors">For Distribution Partners</Link></li>
+                <li><Link to={createPageUrl('ForAdvertisers')} className="hover:text-blue-500 transition-colors">For Advertisers</Link></li>
+                <li><Link to={createPageUrl('HowItWorks')} className="hover:text-blue-500 transition-colors">How It Works</Link></li>
               </ul>
             </div>
           </div>

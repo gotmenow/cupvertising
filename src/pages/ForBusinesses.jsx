@@ -46,14 +46,14 @@ export default function ForBusinesses() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="bg-amber-50 py-20">
+      <section className="bg-blue-50 py-20">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="w-16 h-16 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-lg shadow-amber-600/30">
+            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-lg shadow-blue-600/30">
               <Coins className="w-8 h-8" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -63,7 +63,7 @@ export default function ForBusinesses() {
               We provide restaurants, cafes, and event organizers with high-quality, essential supplies completely free of charge.
             </p>
             <Link to={createPageUrl('BusinessOnboarding')}>
-              <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 h-12 rounded-full">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 h-12 rounded-full">
                 Calculate Your Savings
               </Button>
             </Link>
@@ -89,7 +89,7 @@ export default function ForBusinesses() {
                   <ul className="space-y-2">
                     {cat.items.map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                        <Check className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}

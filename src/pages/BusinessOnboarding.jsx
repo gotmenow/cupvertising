@@ -189,7 +189,7 @@ export default function BusinessOnboarding() {
             <ArrowLeft className="w-5 h-5" />
           </Button>
           <div className="font-bold text-lg flex items-center gap-2">
-            <Coins className="w-5 h-5 text-amber-600" />
+            <Coins className="w-5 h-5 text-blue-600" />
             <span>Savings Calculator</span>
           </div>
         </div>
@@ -252,7 +252,7 @@ export default function BusinessOnboarding() {
 
           {step === 'volume' && (
             <div className="flex flex-col gap-3 items-end">
-               <div className="text-xs font-semibold text-amber-600 uppercase tracking-wide">
+               <div className="text-xs font-semibold text-blue-600 uppercase tracking-wide">
                   Typical spend for {data.type}
                </div>
                <div className="flex flex-wrap gap-3 justify-end">
@@ -273,7 +273,7 @@ export default function BusinessOnboarding() {
                      return (
                         <div key={opt.val} className="relative">
                             {isRecommended && (
-                                <span className="absolute -top-2.5 -right-1 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm animate-bounce">
+                                <span className="absolute -top-2.5 -right-1 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10 shadow-sm animate-bounce">
                                     Recommended
                                 </span>
                             )}
@@ -292,7 +292,7 @@ export default function BusinessOnboarding() {
 
           {step === 'results' && (
             <div className="flex justify-center w-full">
-              <Button onClick={handleStartEnrollment} className="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 py-6 h-auto rounded-full shadow-lg animate-pulse">
+              <Button onClick={handleStartEnrollment} className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-6 h-auto rounded-full shadow-lg animate-pulse">
                 Yes, Claim Free Inventory <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
@@ -366,7 +366,7 @@ function ProductSelector({ onSelect, businessType }) {
     <div className="space-y-4">
       <div className="flex flex-col items-end gap-4">
         <div className="text-right">
-             <div className="text-xs font-semibold text-amber-600 mb-2 uppercase tracking-wide">Recommended for {businessType}</div>
+             <div className="text-xs font-semibold text-blue-600 mb-2 uppercase tracking-wide">Recommended for {businessType}</div>
              <div className="flex flex-wrap gap-2 justify-end">
                 {recommended.map(item => (
                 <OptionButton key={item} onClick={() => toggle(item)} selected={selected.includes(item)}>
@@ -388,7 +388,7 @@ function ProductSelector({ onSelect, businessType }) {
                 </div>
             </div>
         ) : (
-            <button onClick={() => setShowOthers(true)} className="text-xs text-slate-500 hover:text-amber-600 underline underline-offset-4">
+            <button onClick={() => setShowOthers(true)} className="text-xs text-slate-500 hover:text-blue-600 underline underline-offset-4">
                 Show more options
             </button>
         )}
@@ -397,7 +397,7 @@ function ProductSelector({ onSelect, businessType }) {
          <Button 
            disabled={selected.length === 0} 
            onClick={() => onSelect(selected)}
-           className="bg-amber-600 hover:bg-amber-700 text-white rounded-full"
+           className="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
          >
            Confirm Selection <ArrowRight className="w-4 h-4 ml-2" />
          </Button>

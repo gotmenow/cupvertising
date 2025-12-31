@@ -64,9 +64,9 @@ export default function Franchise() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <Badge className="bg-amber-500 text-black mb-6 px-4 py-1 text-sm font-bold">FRANCHISE OPPORTUNITY</Badge>
+            <Badge className="bg-blue-500 text-black mb-6 px-4 py-1 text-sm font-bold">FRANCHISE OPPORTUNITY</Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Own a <span className="text-amber-500">Vertising</span> Territory.
+              Own a <span className="text-blue-500">Vertising</span> Territory.
             </h1>
             <p className="text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
               Launch a high-growth media business in your city. Connect local businesses with free supplies and help brands reach their audience. 
@@ -74,7 +74,7 @@ export default function Franchise() {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to={createPageUrl('Contact') + "?tab=franchise"}>
-                <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white min-w-[200px] h-14 text-lg font-semibold rounded-xl">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white min-w-[200px] h-14 text-lg font-semibold rounded-xl">
                   Apply Now
                 </Button>
               </Link>
@@ -102,7 +102,7 @@ export default function Franchise() {
             {benefits.map((item, idx) => (
               <Card key={idx} className="border-slate-100 shadow-lg hover:shadow-xl transition-all group">
                 <CardContent className="p-8">
-                  <div className="w-14 h-14 bg-slate-50 text-amber-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                  <div className="w-14 h-14 bg-slate-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <item.icon className="w-7 h-7" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
@@ -159,7 +159,7 @@ export default function Franchise() {
                 Territories are limited. Secure your city today and start building a sustainable media empire.
               </p>
               <Link to={createPageUrl('Contact') + "?tab=franchise"}>
-                <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-8 h-12 text-lg">
+                <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-black font-bold px-8 h-12 text-lg">
                   Inquire About Franchising
                 </Button>
               </Link>

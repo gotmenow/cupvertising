@@ -23,7 +23,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-sm font-medium">
                 <Building2 className="w-4 h-4" /> Parent Company
               </div>
               <h2 className="text-3xl font-bold text-slate-900">Backed by Experience</h2>
@@ -35,7 +35,7 @@ export default function About() {
               </p>
               <div className="flex gap-6 pt-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-amber-600">
+                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-blue-600">
                     <History className="w-5 h-5" />
                   </div>
                   <div>
@@ -44,7 +44,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-amber-600">
+                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-blue-600">
                     <Award className="w-5 h-5" />
                   </div>
                   <div>
@@ -66,7 +66,7 @@ export default function About() {
               </div>
             </div>
             <div className="relative">
-              <div className="absolute -inset-4 bg-amber-100 rounded-2xl transform rotate-3 -z-10"></div>
+              <div className="absolute -inset-4 bg-blue-100 rounded-2xl transform rotate-3 -z-10"></div>
               <img 
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" 
                 alt="Team Meeting" 

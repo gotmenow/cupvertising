@@ -85,7 +85,7 @@ export default function ForAdvertisers() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge className="bg-amber-100 text-amber-800 mb-4 px-4 py-1">Printed-Logic Technology</Badge>
+            <Badge className="bg-blue-100 text-blue-800 mb-4 px-4 py-1">Printed-Logic Technology</Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Beyond Static QR Codes</h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               We turn physical packaging into interactive "Smart Assets" using advanced Nature-Free technologies.
@@ -174,7 +174,7 @@ export default function ForAdvertisers() {
             {mediums.map((m, idx) => (
               <Card key={idx} className="hover:shadow-lg transition-all border-none bg-white">
                 <CardHeader>
-                  <div className={`w-12 h-12 ${idx === 0 ? 'bg-amber-100 text-amber-600' : idx === 1 ? 'bg-orange-100 text-orange-600' : 'bg-purple-100 text-purple-600'} rounded-lg flex items-center justify-center mb-4`}>
+                  <div className={`w-12 h-12 ${idx === 0 ? 'bg-blue-100 text-blue-600' : idx === 1 ? 'bg-orange-100 text-orange-600' : 'bg-purple-100 text-purple-600'} rounded-lg flex items-center justify-center mb-4`}>
                     <m.icon className="w-6 h-6" />
                   </div>
                   <CardTitle className="text-xl">{m.title}</CardTitle>

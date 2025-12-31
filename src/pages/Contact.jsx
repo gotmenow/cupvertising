@@ -146,7 +146,7 @@ export default function Contact() {
         <Card className="shadow-xl border-none bg-white">
           <Tabs defaultValue={defaultTab} className="w-full">
             <TabsList className="grid w-full grid-cols-3 h-16 p-1 bg-slate-100 rounded-t-xl">
-              <TabsTrigger value="partner" className="h-full text-sm md:text-base font-medium data-[state=active]:bg-amber-600 data-[state=active]:text-white transition-all">
+              <TabsTrigger value="partner" className="h-full text-sm md:text-base font-medium data-[state=active]:bg-blue-600 data-[state=active]:text-white transition-all">
                 <Package className="w-4 h-4 md:w-5 md:h-5 mr-2" /> Free Supplies
               </TabsTrigger>
               <TabsTrigger value="advertiser" className="h-full text-sm md:text-base font-medium data-[state=active]:bg-teal-600 data-[state=active]:text-white transition-all">
@@ -239,7 +239,7 @@ export default function Contact() {
                   <Textarea id="p_msg" placeholder="Any specific requirements?" value={partnerForm.message} onChange={e => setPartnerForm({...partnerForm, message: e.target.value})} />
                 </div>
 
-                <Button type="submit" className="w-full bg-amber-600 hover:bg-amber-700 text-lg h-12" disabled={isSubmitting}>
+                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-lg h-12" disabled={isSubmitting}>
                   {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Apply for Free Supplies'}
                 </Button>
               </form>
