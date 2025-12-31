@@ -274,24 +274,12 @@ export default function BusinessOnboarding() {
             </div>
           )}
 
-          {step === 'details_name' && (
-            <ChatInput onSend={handleNameSubmit} placeholder="Your Full Name..." />
-          )}
-
           {step === 'details_business' && (
             <ChatInput onSend={handleBusinessSubmit} placeholder="Business Name..." />
           )}
 
-          {step === 'details_phone' && (
-            <ChatInput onSend={handlePhoneSubmit} placeholder="Phone Number..." type="tel" />
-          )}
-
           {step === 'details_address' && (
             <ChatInput onSend={handleAddressSubmit} placeholder="Full Address or City..." />
-          )}
-
-          {step === 'details_email' && (
-            <ChatInput onSend={handleEmailSubmit} placeholder="Email Address..." type="email" />
           )}
           
            {step === 'completed' && (
