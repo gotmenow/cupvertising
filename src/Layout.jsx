@@ -22,6 +22,7 @@ export default function Layout({ children }) {
         { name: 'For Advertisers', path: '/ForAdvertisers', icon: Megaphone },
         { name: 'Franchise', path: '/Franchise', icon: Briefcase },
         { name: 'Pitch Deck', path: '/PitchDeck', icon: Presentation },
+        { name: 'Social Agent', path: '/SocialAgent', icon: Bot },
         { name: 'About Us', path: '/About', icon: Users },
         { name: 'Contact', path: '/Contact', icon: Mail },
       ];
@@ -133,6 +134,7 @@ export default function Layout({ children }) {
                 <li><Link to={createPageUrl('ForBusinesses')} className="hover:text-blue-500 transition-colors">For Distribution Partners</Link></li>
                 <li><Link to={createPageUrl('ForAdvertisers')} className="hover:text-blue-500 transition-colors">For Advertisers</Link></li>
                 <li><Link to={createPageUrl('HowItWorks')} className="hover:text-blue-500 transition-colors">How It Works</Link></li>
+                <li><Link to={createPageUrl('SocialAgent')} className="hover:text-blue-500 transition-colors">AI Social Manager</Link></li>
               </ul>
             </div>
           </div>
