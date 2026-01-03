@@ -11,7 +11,7 @@ Deno.serve(async (req) => {
         }
 
         // 2. Parse Payload
-        const { content, visibility = "PUBLIC" } = await req.json();
+        const { content, imageUrl, visibility = "PUBLIC" } = await req.json();
 
         if (!content) {
             return Response.json({ error: 'Content is required' }, { status: 400 });
@@ -44,17 +44,85 @@ Deno.serve(async (req) => {
         const profileData = await profileResp.json();
         const personUrn = profileData.sub; // 'sub' is the unique identifier in OpenID Connect
 
-        // 5. Publish Post
+        // 5. Handle Image Upload (if present)
+        let assetUrn = null;
+
+        if (imageUrl) {
+            // A. Register Upload
+            const registerBody = {
+                "registerUploadRequest": {
+                    "recipes": ["urn:li:digitalmediaRecipe:feedshare-image"],
+                    "owner": `urn:li:person:${personUrn}`,
+                    "serviceRelationships": [{
+                        "relationshipType": "OWNER",
+                        "identifier": "urn:li:userGeneratedContent"
+                    }]
+                }
+            };
+
+            const registerResp = await fetch('https://api.linkedin.com/v2/assets?action=registerUpload', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(registerBody)
+            });
+
+            if (!registerResp.ok) {
+                const err = await registerResp.text();
+                console.error("LinkedIn Asset Register Error:", err);
+                // Continue without image or fail? Let's fail to let user know.
+                return Response.json({ error: 'Failed to register image upload', details: err }, { status: 500 });
+            }
+
+            const registerData = await registerResp.json();
+            const uploadUrl = registerData.value.uploadMechanism["com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest"].uploadUrl;
+            assetUrn = registerData.value.asset;
+
+            // B. Download Image
+            const imageResp = await fetch(imageUrl);
+            if (!imageResp.ok) throw new Error("Failed to download generated image");
+            const imageBlob = await imageResp.blob();
+
+            // C. Upload Image to LinkedIn
+            const uploadResp = await fetch(uploadUrl, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                body: imageBlob
+            });
+
+            if (!uploadResp.ok) {
+                const err = await uploadResp.text();
+                console.error("LinkedIn Image Upload Error:", err);
+                return Response.json({ error: 'Failed to upload image binary', details: err }, { status: 500 });
+            }
+        }
+
+        // 6. Publish Post
+        const shareContent = {
+            shareCommentary: {
+                text: content
+            },
+            shareMediaCategory: assetUrn ? "IMAGE" : "NONE"
+        };
+
+        if (assetUrn) {
+            shareContent.media = [{
+                status: "READY",
+                description: { text: "Generated Image" },
+                media: assetUrn,
+                title: { text: "Image" }
+            }];
+        }
+
         const postBody = {
             author: `urn:li:person:${personUrn}`,
             lifecycleState: "PUBLISHED",
             specificContent: {
-                "com.linkedin.ugc.ShareContent": {
-                    shareCommentary: {
-                        text: content
-                    },
-                    shareMediaCategory: "NONE"
-                }
+                "com.linkedin.ugc.ShareContent": shareContent
             },
             visibility: {
                 "com.linkedin.ugc.MemberNetworkVisibility": visibility
