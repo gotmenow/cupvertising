@@ -45,22 +45,26 @@ export default function SocialAgent() {
     const [inputValue, setInputValue] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [conversationId, setConversationId] = useState(null);
+    const [selectedAgent, setSelectedAgent] = useState("SocialPublisher"); // SocialPublisher | SocialEngager
     const scrollRef = useRef(null);
 
     // Initialize or load conversation
     useEffect(() => {
         const initChat = async () => {
+            setMessages([]);
+            setConversationId(null);
+            
             try {
                 // List existing conversations for this agent
-                const convs = await base44.agents.listConversations({ agent_name: "SocialPublisher" });
+                const convs = await base44.agents.listConversations({ agent_name: selectedAgent });
                 
                 let conv;
                 if (convs.length > 0) {
                     conv = convs[0];
                 } else {
                     conv = await base44.agents.createConversation({
-                        agent_name: "SocialPublisher",
-                        metadata: { name: "Social Media Drafts" }
+                        agent_name: selectedAgent,
+                        metadata: { name: selectedAgent === "SocialPublisher" ? "Social Media Drafts" : "Engagement Strategy" }
                     });
                 }
                 
@@ -71,7 +75,7 @@ export default function SocialAgent() {
             }
         };
         initChat();
-    }, []);
+    }, [selectedAgent]);
 
     // Subscribe to updates
     useEffect(() => {
@@ -113,14 +117,32 @@ export default function SocialAgent() {
 
     return (
         <div className="container mx-auto max-w-4xl p-4 h-[calc(100vh-80px)] flex flex-col">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-slate-900">Social Media Manager</h1>
-                    <p className="text-slate-500">Draft and publish content with AI assistance</p>
+                    <h1 className="text-2xl font-bold text-slate-900">AI Social Agents</h1>
+                    <p className="text-slate-500">Select an agent to assist with your social strategy</p>
                 </div>
+                
+                <div className="flex gap-2">
+                    <Button 
+                        variant={selectedAgent === "SocialPublisher" ? "default" : "outline"}
+                        onClick={() => setSelectedAgent("SocialPublisher")}
+                        className={selectedAgent === "SocialPublisher" ? "bg-slate-900" : ""}
+                    >
+                        Publisher
+                    </Button>
+                    <Button 
+                        variant={selectedAgent === "SocialEngager" ? "default" : "outline"}
+                        onClick={() => setSelectedAgent("SocialEngager")}
+                        className={selectedAgent === "SocialEngager" ? "bg-slate-900" : ""}
+                    >
+                        Engager
+                    </Button>
+                </div>
+
                 {/* WhatsApp Link */}
                 <a 
-                    href={base44.agents.getWhatsAppConnectURL('SocialPublisher')} 
+                    href={base44.agents.getWhatsAppConnectURL(selectedAgent)} 
                     target="_blank" 
                     rel="noreferrer"
                     className="text-sm font-medium text-green-600 hover:text-green-700 flex items-center gap-2 bg-green-50 px-3 py-1.5 rounded-full border border-green-200"
@@ -134,8 +156,17 @@ export default function SocialAgent() {
                     {messages.length === 0 && (
                         <div className="text-center text-slate-400 mt-20">
                             <Bot className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                            <p>Hello! I can help you draft and publish posts to LinkedIn.</p>
-                            <p className="text-sm">Try saying: "Draft a post about our new coffee cups"</p>
+                            {selectedAgent === "SocialPublisher" ? (
+                                <>
+                                    <p>Hello! I can help you draft and publish posts.</p>
+                                    <p className="text-sm">Try saying: "Draft a post about our new coffee cups"</p>
+                                </>
+                            ) : (
+                                <>
+                                    <p>Hello! I'm your Growth Strategist.</p>
+                                    <p className="text-sm">Try saying: "How do I respond to a trending sustainability post?"</p>
+                                </>
+                            )}
                         </div>
                     )}
                     {messages.map((msg, i) => (
