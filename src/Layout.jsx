@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, Coffee, Megaphone, Info, Mail, Home, Presentation, Users, Briefcase, Bot } from 'lucide-react';
+import { Menu, X, Coffee, Megaphone, Info, Mail, Home, Presentation, Users, Briefcase, Bot, MessageCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/base44Client";
 
@@ -106,6 +106,17 @@ export default function Layout({ children }) {
       <main className="flex-1">
         {children}
       </main>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href={base44.agents.getWhatsAppConnectURL('SocialPublisher')}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center"
+        title="Chat with AI Agent on WhatsApp"
+      >
+        <MessageCircle className="h-8 w-8" />
+      </a>
 
       {/* Footer */}
       <footer className="bg-slate-900 text-slate-300 py-12">
