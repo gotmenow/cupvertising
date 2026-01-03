@@ -38,57 +38,74 @@ Deno.serve(async (req) => {
 
         const data = await getResp.json();
         const rows = data.values || [];
-        const today = new Date().toISOString().split('T')[0];
+        
+        // Format today as DD/MM/YYYY
+        const now = new Date();
+        const dd = String(now.getDate()).padStart(2, '0');
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const yyyy = now.getFullYear();
+        const todayDDMMYYYY = `${dd}/${mm}/${yyyy}`;
         
         const processed = [];
 
         for (let i = 0; i < rows.length; i++) {
             const row = rows[i];
-            const date = row[0];
+            const date = row[0]; // Expecting DD/MM/YYYY
             const topic = row[1];
             const status = row[2];
 
-            // Check if date is today (or past pending) and status is not 'Posted'
-            // Simple string compare for now. Assume format YYYY-MM-DD
-            if (date === today && status !== 'Posted' && topic) {
+            // Check if date is today (exact string match) and status is not 'Posted'
+            if (date === todayDDMMYYYY && status !== 'Posted' && topic) {
                 console.log(`Processing topic: ${topic}`);
                 
-                // 2. Generate Content
-                // Use InvokeLLM to draft the post
+                // 2. Generate Content - Separate for each platform
                 const llmResp = await base44.integrations.Core.InvokeLLM({
-                    prompt: `Draft a professional social media post about: "${topic}". 
-                    Include emojis and 3-5 hashtags. 
-                    Keep it suitable for LinkedIn, Facebook, and Instagram.
-                    Return ONLY the text content, no intro/outro.`,
-                    app_id: Deno.env.get("BASE44_APP_ID")
+                    prompt: `Draft 3 distinct social media posts about: "${topic}".
+                    1. LinkedIn: Professional tone, industry insights, business hashtags.
+                    2. Facebook: Engaging, community-focused, casual but professional.
+                    3. Instagram: Visual storytelling style, catchy hook, 15-20 relevant hashtags.
+                    
+                    Return a JSON object with keys: linkedin, facebook, instagram.`,
+                    app_id: Deno.env.get("BASE44_APP_ID"),
+                    response_json_schema: {
+                        type: "object",
+                        properties: {
+                            linkedin: { type: "string" },
+                            facebook: { type: "string" },
+                            instagram: { type: "string" }
+                        },
+                        required: ["linkedin", "facebook", "instagram"]
+                    }
                 });
-                const postContent = typeof llmResp === 'string' ? llmResp : JSON.stringify(llmResp);
+
+                // Handle response - InvokeLLM with schema returns object directly
+                const posts = typeof llmResp === 'string' ? JSON.parse(llmResp) : llmResp;
 
                 // 3. Generate Image
                 const imgResp = await base44.integrations.Core.GenerateImage({
-                    prompt: `Professional, modern, high-quality image representing: ${topic}`,
+                    prompt: `Professional, high-quality photorealistic image representing: ${topic}. Clean composition, suitable for social media.`,
                     app_id: Deno.env.get("BASE44_APP_ID")
                 });
                 const imageUrl = imgResp.url;
 
-                // 4. Publish to All Platforms
+                // 4. Publish to All Platforms with specific content
                 const results = {};
 
                 // LinkedIn
                 try {
-                    const liResp = await base44.asServiceRole.functions.invoke('publishToLinkedIn', { content: postContent, imageUrl });
+                    const liResp = await base44.asServiceRole.functions.invoke('publishToLinkedIn', { content: posts.linkedin, imageUrl });
                     results.linkedin = liResp.data.success ? 'Success' : 'Failed';
                 } catch (e) { results.linkedin = 'Error'; }
 
                 // Facebook
                 try {
-                    const fbResp = await base44.asServiceRole.functions.invoke('publishToFacebook', { content: postContent, imageUrl });
+                    const fbResp = await base44.asServiceRole.functions.invoke('publishToFacebook', { content: posts.facebook, imageUrl });
                     results.facebook = fbResp.data.success ? 'Success' : 'Failed';
                 } catch (e) { results.facebook = 'Error'; }
 
                 // Instagram
                 try {
-                    const igResp = await base44.asServiceRole.functions.invoke('publishToInstagram', { content: postContent, imageUrl });
+                    const igResp = await base44.asServiceRole.functions.invoke('publishToInstagram', { content: posts.instagram, imageUrl });
                     results.instagram = igResp.data.success ? 'Success' : 'Failed';
                 } catch (e) { results.instagram = 'Error'; }
 
