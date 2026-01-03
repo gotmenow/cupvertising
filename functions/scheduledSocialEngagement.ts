@@ -11,92 +11,86 @@ Deno.serve(async (req) => {
         console.log("Starting Scheduled Social Engagement...");
 
         // 1. Find Trend & Generate Content
-        // We use the Persona from SocialEngager agent
-        const systemPrompt = `You are the Lead AI Growth Strategist for Vertising (a child firm of Gotmenow LTD). 
+        // We use the SocialEngager persona for curating content
+        const systemPrompt = `You are the Lead Social Media Engagement Agent for Vertising.
+        Your goal is to REPOST and COMMENT on trending topics. You do NOT create original posts.
         
         CORE KNOWLEDGE:
-        - Product: 100% Nature-Free (plastic-free) supplies.
-        - Model: "Zero-Cost" for SMEs, Advertiser-funded (£330/1k units).
-        - Innovation: Triple-Win Affiliate Model + Multi-Stakeholder App.
+        - Product: 100% Nature-Free supplies.
+        - Model: "Zero-Cost" for SMEs, Advertiser-funded.
+        - Innovation: Triple-Win Affiliate Model.
         - URL: www.vertising.co.uk
         
         PERSONA:
-        - Human Touch: Empathy, curiosity, professional wit. No corporate jargon.
-        - Status: Thought Leader in Sustainability and AdTech.
-        - Perspective: Anti-"Digital Waste", Pro-"Local High Street".
-        
-        GOAL:
-        - Engage in high-traffic conversations to attract Investors, SMEs, and Advertisers.
-        - Bridge trending topics to the Vertising solution.`;
+        - Thought Leader in Sustainability and AdTech.
+        - Anti-"Digital Waste", Pro-"Local High Street".`;
 
         const llmResponse = await base44.integrations.Core.InvokeLLM({
             app_id: appId,
-            prompt: `1. Search the internet for ONE trending news story, article, or viral discussion from the last 24 hours in the UK related to:
+            prompt: `1. Search the internet for ONE trending news story, article, or high-traffic discussion from the last 24 hours in the UK related to:
                - "Cost of Living" crisis for SMEs/Hospitality
-               - "Sustainability" or "Plastic Free" mandates
+               - "Sustainability" mandates
                - "Marketing Trends" or "OOH Advertising"
+               
+               IMPORTANT: Return the URL of the article/discussion found.
             
-            2. Based on this trending topic, write a "Thought Leadership" social media post.
-               - Hook: Acknowledge the trend/news (Human Touch).
-               - Pivot: Explain how Vertising's "Zero-Cost" or "Triple-Win" model addresses it.
-               - CTA: Visit www.vertising.co.uk.
-               - Include 3-5 relevant hashtags (e.g., #Sustainability, #AdTech).
+            2. Generate "Engagement Actions" for this topic:
+               - Repost Caption: A 2-line "Value-Add" caption for sharing this link. Connect the story to Vertising's "Triple-Win" ecosystem.
+               - Comment Drafts: 3 variations (Supportive Insight, Disruptive Statistic, Direct Invitation).
             
             3. Return ONLY a JSON object with this structure:
                {
-                 "topic_summary": "Short summary of the trend found",
-                 "post_content": "The actual social media post text",
-                 "image_prompt": "A description for an AI image generator to create a relevant, professional visual for this post"
+                 "found_url": "The URL of the news story/article found",
+                 "topic_summary": "Short summary of the trend",
+                 "repost_caption": "The value-add caption to use when sharing the link",
+                 "comment_drafts": ["Draft 1", "Draft 2", "Draft 3"]
                }`,
             add_context_from_internet: true,
             response_json_schema: {
                 type: "object",
                 properties: {
+                    found_url: { type: "string" },
                     topic_summary: { type: "string" },
-                    post_content: { type: "string" },
-                    image_prompt: { type: "string" }
+                    repost_caption: { type: "string" },
+                    comment_drafts: { type: "array", items: { type: "string" } }
                 },
-                required: ["topic_summary", "post_content", "image_prompt"]
+                required: ["found_url", "topic_summary", "repost_caption", "comment_drafts"]
             }
         });
 
-        // Parse LLM response (it comes as object because json_schema was used)
+        // Parse LLM response
         const result = typeof llmResponse === 'string' ? JSON.parse(llmResponse) : llmResponse;
         
-        console.log(`Trend found: ${result.topic_summary}`);
+        console.log(`Trend found: ${result.topic_summary} (${result.found_url})`);
 
-        // 2. Generate Image
-        const imgResp = await base44.integrations.Core.GenerateImage({
-            prompt: `Professional, editorial style photo or 3D render: ${result.image_prompt}. High quality, suitable for LinkedIn/Instagram business.`,
-            app_id: appId
-        });
-        const imageUrl = imgResp.url;
-
-        // 3. Publish
+        // 2. Automate "Reposting" (Sharing the link)
+        // Note: We can't automate "Commenting" on external posts easily without specific post IDs.
+        // So we focus the automation on SHARING the content (Reposting).
+        
         const publishResults = {};
-        const { post_content } = result;
-
-        // LinkedIn
+        const postContent = `${result.repost_caption}\n\n🔗 Read more: ${result.found_url}\n\n#Vertising #TripleWin #Sustainability`;
+        
+        // LinkedIn (Share URL)
         try {
-            const li = await base44.asServiceRole.functions.invoke('publishToLinkedIn', { content: post_content, imageUrl });
-            publishResults.linkedin = li.data.success ? 'Success' : li.data.error;
+            const li = await base44.asServiceRole.functions.invoke('publishToLinkedIn', { content: postContent });
+            publishResults.linkedin = li.data.success ? 'Success (Reposted)' : li.data.error;
         } catch (e) { publishResults.linkedin = e.message; }
 
-        // Facebook
+        // Facebook (Share URL)
         try {
-            const fb = await base44.asServiceRole.functions.invoke('publishToFacebook', { content: post_content, imageUrl });
-            publishResults.facebook = fb.data.success ? 'Success' : fb.data.error;
+            const fb = await base44.asServiceRole.functions.invoke('publishToFacebook', { content: postContent });
+            publishResults.facebook = fb.data.success ? 'Success (Reposted)' : fb.data.error;
         } catch (e) { publishResults.facebook = e.message; }
 
-        // Instagram
-        try {
-            const ig = await base44.asServiceRole.functions.invoke('publishToInstagram', { content: post_content, imageUrl });
-            publishResults.instagram = ig.data.success ? 'Success' : ig.data.error;
-        } catch (e) { publishResults.instagram = e.message; }
+        // Instagram (Can't share links easily in feed, maybe skip or post visual)
+        // For now, we skip IG for "Reposts" of links as it requires an image.
+        publishResults.instagram = "Skipped (IG doesn't support text/link reposts easily)";
 
         return Response.json({
             status: "Completed",
             trend: result.topic_summary,
+            action: "Reposted/Shared Link",
+            generated_comments: result.comment_drafts, // Logged for reference
             results: publishResults
         });
 
