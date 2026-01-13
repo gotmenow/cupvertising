@@ -121,8 +121,8 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1">
               <img 
-                src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?q=80&w=2070&auto=format&fit=crop" 
-                alt="Sustainability" 
+                src="https://images.unsplash.com/photo-1595079676339-1534801fafde?q=80&w=2070&auto=format&fit=crop" 
+                alt="Smart Asset Advertising" 
                 className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               />
             </div>
