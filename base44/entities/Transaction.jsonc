@@ -1,0 +1,52 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the transaction"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount value"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "income",
+        "expense"
+      ],
+      "description": "Type of transaction"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "sales",
+        "advertising",
+        "inventory",
+        "manufacturing",
+        "logistics",
+        "salary",
+        "operational",
+        "other"
+      ],
+      "description": "Category of the transaction"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of transaction"
+    },
+    "description": {
+      "type": "string",
+      "description": "Additional details"
+    }
+  },
+  "required": [
+    "title",
+    "amount",
+    "type",
+    "date",
+    "category"
+  ]
+}

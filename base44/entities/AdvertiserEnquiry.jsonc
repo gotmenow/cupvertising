@@ -1,0 +1,57 @@
+{
+  "name": "AdvertiserEnquiry",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Contact person name"
+    },
+    "business_name": {
+      "type": "string",
+      "description": "Name of the business"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Target audience or industry"
+    },
+    "interested_mediums": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Beverage Cups & Napkins",
+          "Takeout Containers & Bags",
+          "Condiments & Sachets",
+          "Event Wristbands & Labels"
+        ]
+      },
+      "description": "Interested advertising mediums"
+    },
+    "campaign_budget": {
+      "type": "string",
+      "enum": [
+        "Starter (< \u00a31k)",
+        "Growth (\u00a31k - \u00a35k)",
+        "Scale (\u00a35k - \u00a320k)",
+        "Enterprise (\u00a320k+)"
+      ],
+      "description": "Estimated campaign budget"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string",
+      "description": "Campaign goals and details"
+    }
+  },
+  "required": [
+    "name",
+    "business_name",
+    "email"
+  ]
+}

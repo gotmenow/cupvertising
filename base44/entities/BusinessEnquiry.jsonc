@@ -1,0 +1,49 @@
+{
+  "name": "BusinessEnquiry",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Contact person name"
+    },
+    "business_name": {
+      "type": "string",
+      "description": "Name of the business or event"
+    },
+    "business_type": {
+      "type": "string",
+      "description": "Type of business"
+    },
+    "interested_products": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Products interested in receiving"
+    },
+    "weekly_volume": {
+      "type": "string",
+      "description": "Estimated weekly usage volume"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string",
+      "description": "Delivery address or location"
+    },
+    "message": {
+      "type": "string",
+      "description": "Additional details"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "business_type"
+  ]
+}
